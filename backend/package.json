@@ -15,7 +15,7 @@
     "authorization",
     "sqlite"
   ],
-  "author": "bezkoder",
+  "author": "cooldevop",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^10.0.0",
