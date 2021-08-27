@@ -26,16 +26,16 @@ const Home = () => {
       <header className="jumbotron">
         <h3>{content}</h3>
       </header>
-      <div className="bg-blue-400 h-screen grid">
+      <div className="bg-pink-600 h-screen grid">
         <div className="w-3/4 my-auto ml-20">
-          <h1 className="text-5xl font-bold mb-10 text-white">
+          <h1 className="text-2xl font-bold mb-10 text-red-800">
             JIT mode is cool
           </h1>
-          <p className="text-white">
+          <p className="text-blue-600">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo
             officia earum ducimus neque obcaecati consequuntur ratione accusamus
             at officiis tempore, magnam non debitis fugit unde alias id quidem
-            necessitatibus. Fritzou
+            necessitatibus. Fritzou #234
           </p>
         </div>
       </div>
