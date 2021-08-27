@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "./App.css";
+import "./index.css";
 
 import AuthService from "./services/auth.service";
 
