@@ -22,23 +22,23 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="container">
-      <header className="jumbotron">
-        <h3>{content}</h3>
-      </header>
-      <div className="bg-pink-600 h-screen grid">
-        <div className="w-3/4 my-auto ml-20">
-          <h1 className="text-2xl font-bold mb-10 text-green-600">
-            JIT mode is cool
-          </h1>
-          <p className="text-blue-600">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo
-            officia earum ducimus neque obcaecati consequuntur ratione accusamus
-            at officiis tempore, magnam non debitis fugit unde alias id quidem
-            necessitatibus. Fritzou #1961 octobre
-          </p>
+    <div>
+      <header className="bg-white shadow">
+        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+          <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
         </div>
-      </div>
+      </header>
+      <main>
+        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+          {/* <!-- Replace with your content --> */}
+          <div className="px-4 py-6 sm:px-0">
+            <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
+              {content}
+            </div>
+          </div>
+          {/* <!-- /End replace --> */}
+        </div>
+      </main>
     </div>
   );
 };
