@@ -15,30 +15,11 @@ db.publications = require("../models/publication.model.js")(
   sequelize,
   Sequelize
 );
-db.comments = require("../models/comment.model.js")(sequelize, Sequelize);
-
 db.refreshToken = require("../models/refreshToken.model.js")(
   sequelize,
   Sequelize
 );
 
-//
-db.user.hasMany(db.publications, { as: "publications" });
-
-db.publications.belongsTo(db.user, {
-  foreignKey: "userId",
-  as: "user",
-});
-
-//
-db.publications.hasMany(db.comments, { as: "comments" });
-
-db.comments.belongsTo(db.publications, {
-  foreignKey: "publicationId",
-  as: "publication",
-});
-
-//
 db.role.belongsToMany(db.user, {
   through: "user_roles",
   foreignKey: "roleId",
@@ -51,7 +32,6 @@ db.user.belongsToMany(db.role, {
   otherKey: "roleId",
 });
 
-//
 db.refreshToken.belongsTo(db.user, {
   foreignKey: "userId",
   targetKey: "id",
