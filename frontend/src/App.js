@@ -12,7 +12,10 @@ import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
 import Menu from "./components/Menu";
 import Footer from "./components/Footer";
-import Publications from "./components/Publications";
+import PublicationsHome from "./components/PublicationsHome";
+import PublicationsList from "./components/PublicationsList";
+import AddPublication from "./components/AddPublication";
+import Publication from "./components/Publication";
 
 // import AuthVerify from "./common/AuthVerify";
 import EventBus from "./common/EventBus";
@@ -48,7 +51,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen overflow-hidden">
       <Menu
         showModeratorBoard={showModeratorBoard}
         showAdminBoard={showAdminBoard}
@@ -59,13 +62,16 @@ const App = () => {
       <div>
         <Switch>
           <Route exact path={["/", "/home"]} component={Home} />
-          <Route exact path="/publications" component={Publications} />
+          <Route exact path="/publicationsHome" component={PublicationsHome} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" component={Profile} />
           <Route path="/user" component={BoardUser} />
           <Route path="/mod" component={BoardModerator} />
           <Route path="/admin" component={BoardAdmin} />
+          <Route exact path="/publications" component={PublicationsList} />
+          <Route exact path="/addPub" component={AddPublication} />
+          <Route path="/publications/:id" component={Publication} />
         </Switch>
       </div>
 

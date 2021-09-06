@@ -5,7 +5,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Publications() {
+export default function PublicationsHome() {
   let [categories] = useState({
     Recent: [
       {

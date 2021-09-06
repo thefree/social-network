@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 import UserService from "../services/user.service";
 
 const Home = () => {
@@ -34,7 +34,19 @@ const Home = () => {
           <div className="px-4 py-6 sm:px-0">
             <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
               {content}
+              <Link
+                to={"/publications"}
+                className="mr-10 hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+              >
+                Home
+              </Link>
             </div>
+            <Link
+              to={"/publications"}
+              className="mr-10 hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Home
+            </Link>
           </div>
           {/* <!-- /End replace --> */}
         </div>

@@ -7,8 +7,8 @@ const Menu = ({ showModeratorBoard, showAdminBoard, currentUser, logOut }) => {
   return (
     <div>
       <nav className="bg-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* <div className="mx-auto px-4 sm:px-6 lg:px-8"> */}
+        {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> */}
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
@@ -50,14 +50,12 @@ const Menu = ({ showModeratorBoard, showAdminBoard, currentUser, logOut }) => {
                       to={"/user"}
                       className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                     >
-                      User Board
+                      User
                     </Link>
                   )}
                 </div>
-              </div>
 
-              {currentUser ? (
-                <div className="hidden md:block">
+                {currentUser ? (
                   <div className="ml-10 flex items-baseline space-x-4">
                     <Link
                       to={"/profile"}
@@ -73,9 +71,7 @@ const Menu = ({ showModeratorBoard, showAdminBoard, currentUser, logOut }) => {
                       Logout
                     </a>
                   </div>
-                </div>
-              ) : (
-                <div className="hidden md:block">
+                ) : (
                   <div className="ml-10 flex items-baseline space-x-4">
                     <Link
                       to={"/login"}
@@ -90,8 +86,8 @@ const Menu = ({ showModeratorBoard, showAdminBoard, currentUser, logOut }) => {
                       Sign Up
                     </Link>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
             <div className="-mr-2 flex md:hidden">
               <button
@@ -138,93 +134,92 @@ const Menu = ({ showModeratorBoard, showAdminBoard, currentUser, logOut }) => {
               </button>
             </div>
           </div>
-          {/* </div> */}
+        </div>
 
-          <Transition
-            show={isOpen}
-            enter="transition ease-out duration-100 transform"
-            enterFrom="opacity-0 scale-95"
-            enterTo="opacity-100 scale-100"
-            leave="transition ease-in duration-75 transform"
-            leaveFrom="opacity-100 scale-100"
-            leaveTo="opacity-0 scale-95"
-          >
-            {(ref) => (
-              <div className="md:hidden" id="mobile-menu">
-                <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                  <div className="ml-10 flex flex-col items-baseline">
+        <Transition
+          show={isOpen}
+          enter="transition ease-out duration-100 transform"
+          enterFrom="opacity-0 scale-95"
+          enterTo="opacity-100 scale-100"
+          leave="transition ease-in duration-75 transform"
+          leaveFrom="opacity-100 scale-100"
+          leaveTo="opacity-0 scale-95"
+        >
+          {(ref) => (
+            <div className="md:hidden" id="mobile-menu">
+              <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <div className="ml-10 flex items-baseline space-x-4">
+                  <Link
+                    to={"/home"}
+                    className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Home
+                  </Link>
+
+                  {showModeratorBoard && (
                     <Link
-                      to={"/home"}
-                      className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+                      to={"/mod"}
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                     >
-                      Home
+                      Moderator Board
                     </Link>
+                  )}
 
-                    {showModeratorBoard && (
-                      <Link
-                        to={"/mod"}
-                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                      >
-                        Moderator Board
-                      </Link>
-                    )}
+                  {showAdminBoard && (
+                    <Link
+                      to={"/admin"}
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Admin Board
+                    </Link>
+                  )}
 
-                    {showAdminBoard && (
-                      <Link
-                        to={"/admin"}
-                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                      >
-                        Admin Board
-                      </Link>
-                    )}
-
-                    {currentUser && (
-                      <Link
-                        to={"/user"}
-                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                      >
-                        User Board
-                      </Link>
-                    )}
-                  </div>
-
-                  {currentUser ? (
-                    <div className="ml-10 flex flex-col items-baseline">
-                      <Link
-                        to={"/profile"}
-                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                      >
-                        {currentUser.username}
-                      </Link>
-                      <a
-                        href="/login"
-                        onClick={logOut}
-                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                      >
-                        Logout
-                      </a>
-                    </div>
-                  ) : (
-                    <div className="ml-10 flex flex-col items-baseline space-x-4">
-                      <Link
-                        to={"/login"}
-                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                      >
-                        Login
-                      </Link>
-                      <Link
-                        to={"/register"}
-                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                      >
-                        Sign Up
-                      </Link>
-                    </div>
+                  {currentUser && (
+                    <Link
+                      to={"/user"}
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      User
+                    </Link>
                   )}
                 </div>
+
+                {currentUser ? (
+                  <div className="ml-10 flex items-baseline space-x-4">
+                    <Link
+                      to={"/profile"}
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      {currentUser.username}
+                    </Link>
+                    <a
+                      href="/login"
+                      onClick={logOut}
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Logout
+                    </a>
+                  </div>
+                ) : (
+                  <div className="ml-10 flex items-baseline space-x-4">
+                    <Link
+                      to={"/login"}
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Login
+                    </Link>
+                    <Link
+                      to={"/register"}
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Sign Up
+                    </Link>
+                  </div>
+                )}
               </div>
-            )}
-          </Transition>
-        </div>
+            </div>
+          )}
+        </Transition>
       </nav>
     </div>
   );
