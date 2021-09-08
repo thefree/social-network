@@ -21,7 +21,6 @@
     "init-server": "nodemon ../backend/server.js",
     "init-tailwind-cli": "npx tailwindcss -i \"./tailwind.css\" -o \"./src/styles.css\" --watch --jit",
     "full": "concurrently --kill-others \"npm run init-server\" \"npm run init-tailwind-cli\" \"npm run start\"",
-    "front": "concurrently --kill-others \"npm run init-tailwind-cli\" \"npm run start\"",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

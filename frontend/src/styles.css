@@ -1341,6 +1341,22 @@ html {
   display: flex;
 }
 
+.avatar {
+  display: inline-flex;
+  position: relative;
+}
+
+.avatar>div {
+  display: block;
+  overflow: hidden;
+}
+
+.avatar img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
 .avatar.placeholder>div {
   display: flex;
   align-items: center;
@@ -1728,6 +1744,14 @@ html {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
+}
+
+.avatar-group .avatar {
+  --tw-border-opacity: 1;
+  border-color: hsla(var(--b1)/var(--tw-border-opacity,1));
+  border-radius: 9999px;
+  border-width: 4px;
+  overflow: hidden;
 }
 
 .btn .badge {
@@ -2354,6 +2378,21 @@ html {
   color: hsla(var(--er)/var(--tw-text-opacity,1));
 }
 
+.avatar.online:before {
+  content: "";
+  --tw-bg-opacity: 1;
+  background-color: hsla(var(--su)/var(--tw-bg-opacity,1));
+  border-radius: 9999px;
+  display: block;
+  height: .5rem;
+  position: absolute;
+  width: .5rem;
+  z-index: 10;
+  top: 5%;
+  right: 5%;
+  box-shadow: 0 0 0 2px hsl(var(--b1));
+}
+
 .avatar.offline:before {
   content: "";
   --tw-bg-opacity: 1;
@@ -2490,6 +2529,16 @@ html {
   margin-right: 0.5rem;
 }
 
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
 .mr-10 {
   margin-right: 2.5rem;
 }
@@ -2540,6 +2589,14 @@ html {
 
 .mb-5 {
   margin-bottom: 1.25rem;
+}
+
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
+.-ml-1 {
+  margin-left: -0.25rem;
 }
 
 .mr-2 {
@@ -2618,6 +2675,22 @@ html {
   height: 2rem;
 }
 
+.h-auto {
+  height: auto;
+}
+
+.h-10 {
+  height: 2.5rem;
+}
+
+.h-5 {
+  height: 1.25rem;
+}
+
+.h-3 {
+  height: 0.75rem;
+}
+
 .h-60 {
   height: 15rem;
 }
@@ -2660,6 +2733,18 @@ html {
 
 .w-8 {
   width: 2rem;
+}
+
+.w-10 {
+  width: 2.5rem;
+}
+
+.w-5 {
+  width: 1.25rem;
+}
+
+.w-3 {
+  width: 0.75rem;
 }
 
 .w-60 {
@@ -2747,6 +2832,10 @@ html {
 
 .grid-flow-col {
   grid-auto-flow: column;
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -2929,6 +3018,11 @@ html {
   background-color: hsla(var(--b2) / var(--tw-bg-opacity));
 }
 
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(239, 68, 68, var(--tw-bg-opacity));
+}
+
 .bg-blue-900\/20 {
   background-color: rgba(30, 58, 138, 0.2);
 }
@@ -3034,6 +3128,16 @@ html {
   padding-right: 0.5rem;
 }
 
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
 .py-16 {
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -3052,11 +3156,6 @@ html {
 .px-12 {
   padding-left: 3rem;
   padding-right: 3rem;
-}
-
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 
 .pt-2 {
@@ -3193,6 +3292,11 @@ html {
   color: rgba(156, 163, 175, var(--tw-text-opacity));
 }
 
+.text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgba(75, 85, 99, var(--tw-text-opacity));
+}
+
 .text-blue-700 {
   --tw-text-opacity: 1;
   color: rgba(29, 78, 216, var(--tw-text-opacity));
@@ -3230,6 +3334,11 @@ html {
 
 .shadow-lg {
   --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-md {
+  --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 

@@ -27,7 +27,7 @@ const Menu = ({ showModeratorBoard, showAdminBoard, currentUser, logOut }) => {
                     Home
                   </Link>
 
-                  {/* {showModeratorBoard && (
+                  {showModeratorBoard && (
                     <Link
                       to={"/mod"}
                       className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
@@ -52,18 +52,6 @@ const Menu = ({ showModeratorBoard, showAdminBoard, currentUser, logOut }) => {
                     >
                       User Board
                     </Link>
-                  )} */}
-
-                  {/*  */}
-                  {currentUser && (
-                    <>
-                      <Link
-                        to={"/publications"}
-                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                      >
-                        Gérer Publications
-                      </Link>
-                    </>
                   )}
                 </div>
               </div>
@@ -75,8 +63,7 @@ const Menu = ({ showModeratorBoard, showAdminBoard, currentUser, logOut }) => {
                       to={"/profile"}
                       className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                     >
-                      {/* {currentUser.username} Profile */}
-                      Profile
+                      {currentUser.username}
                     </Link>
                     <a
                       href="/login"
