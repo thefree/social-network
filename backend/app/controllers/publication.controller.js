@@ -1,5 +1,7 @@
+const { user } = require("../models");
 const db = require("../models");
 const Publication = db.publications;
+const User = db.user;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Tutorial
@@ -38,7 +40,11 @@ exports.findAll = (req, res) => {
   const title = req.query.title;
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
-  Publication.findAll({ where: condition })
+  // Publication.findAll({ where: condition })
+  Publication.findAll({
+    include: { model: User, as: "user" },
+    where: condition,
+  })
     .then((data) => {
       res.send(data);
     })
@@ -54,7 +60,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Publication.findByPk(id)
+  Publication.findByPk(id, { include: { model: User, as: "user" } })
     .then((data) => {
       res.send(data);
     })
