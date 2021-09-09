@@ -31,13 +31,13 @@ const Home = () => {
         </div>
       </header>
       <main>
-        {publications.map((publication, index) => (
+        {publications?.map((publication, index) => (
           <PubItem
             key={index}
             id={publication.id}
             title={publication.title}
             description={publication.description}
-            // publishername={publication.user.username}
+            publishername={publication.user?.username}
           />
         ))}
       </main>

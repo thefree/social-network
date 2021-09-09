@@ -40,8 +40,7 @@ const PublicationPost = (props) => {
           id={currentPublication.id}
           title={currentPublication.title}
           description={currentPublication.description}
-          // publishername={publishername.username}
-          publishername={currentPublication.user?.username}
+          publishername={publishername.username}
         />
       </main>
       <aside className="">

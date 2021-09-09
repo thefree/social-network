@@ -1,5 +1,5 @@
 import { current } from "daisyui/colors";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import PublicationDataService from "../services/PublicationService";
 import PublicationDataService from "../services/PublicationService";
 import AuthService from "../services/auth.service";
@@ -13,20 +13,21 @@ const AddPublication = () => {
   };
   const [publication, setPublication] = useState(initialPublicationState);
   const [submitted, setSubmitted] = useState(false);
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState();
+
+  useEffect(() => {
+    const user = AuthService.getCurrentUser();
+    if (user) {
+      setCurrentUser(user);
+    }
+  }, []);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setPublication({ ...publication, [name]: value });
   };
 
-  const savePublication = () => {
-    const user = AuthService.getCurrentUser();
-
-    if (user) {
-      setCurrentUser(user);
-    }
-
+  const savePublication = async () => {
     var data = {
       title: publication.title,
       description: publication.description,
