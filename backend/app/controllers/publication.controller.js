@@ -74,7 +74,8 @@ exports.findOne = (req, res) => {
 exports.findByPk = (req, res) => {
   const id = req.params.id;
 
-  Publication.findByPk(id, { include: ["comments"] })
+  // Publication.findByPk(id, { include: ["comments"] });
+  Publication.findByPk(id, { include: ["comments", "user"] })
     .then((data) => {
       res.send(data);
     })

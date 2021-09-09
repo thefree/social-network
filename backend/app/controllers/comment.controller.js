@@ -11,7 +11,6 @@ exports.create = (req, res) => {
     });
     return;
   }
-
   // Create a Comment
   const comment = {
     name: req.body.name,
@@ -19,7 +18,6 @@ exports.create = (req, res) => {
     publicationId: req.body.publicationId,
     published: req.body.published ? req.body.published : false,
   };
-
   // Save Comment in the database
   Comment.create(comment)
     .then((comment) => {
