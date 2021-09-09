@@ -1,6 +1,8 @@
+import { current } from "daisyui/colors";
 import React, { useState } from "react";
 // import PublicationDataService from "../services/PublicationService";
 import PublicationDataService from "../services/PublicationService";
+import AuthService from "../services/auth.service";
 
 const AddPublication = () => {
   const initialPublicationState = {
@@ -11,6 +13,7 @@ const AddPublication = () => {
   };
   const [publication, setPublication] = useState(initialPublicationState);
   const [submitted, setSubmitted] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -18,9 +21,16 @@ const AddPublication = () => {
   };
 
   const savePublication = () => {
+    const user = AuthService.getCurrentUser();
+
+    if (user) {
+      setCurrentUser(user);
+    }
+
     var data = {
       title: publication.title,
       description: publication.description,
+      userId: currentUser.id,
     };
 
     PublicationDataService.create(data)
@@ -48,7 +58,7 @@ const AddPublication = () => {
     <div className="submit-form">
       {submitted ? (
         <div>
-          <h4>You submitted successfully!</h4>
+          <h4>Ajout Réussi!</h4>
           <button className="btn btn-success" onClick={newPublication}>
             Add
           </button>
@@ -56,7 +66,7 @@ const AddPublication = () => {
       ) : (
         <div>
           <div className="form-group">
-            <label htmlFor="title">Title</label>
+            <label htmlFor="title">Titre</label>
             <input
               type="text"
               className="form-control"
@@ -69,7 +79,7 @@ const AddPublication = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="description">Description</label>
+            <label htmlFor="description">Text</label>
             <input
               type="text"
               className="form-control"

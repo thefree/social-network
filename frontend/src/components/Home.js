@@ -37,7 +37,7 @@ const Home = () => {
             id={publication.id}
             title={publication.title}
             description={publication.description}
-            publishername={publication.user.username}
+            // publishername={publication.user.username}
           />
         ))}
       </main>

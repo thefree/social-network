@@ -51,6 +51,8 @@ const App = () => {
     setCurrentUser(undefined);
   };
 
+  // console.log("INFOS USER", currentUser);
+
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
       <Menu

@@ -11,6 +11,10 @@ const get = (id) => {
   return axios.get(API_URL + `/${id}`);
 };
 
+const getWithComments = (id) => {
+  return axios.get(API_URL + `/withcomments/${id}`);
+};
+
 const create = (data) => {
   return axios.post(API_URL + "/", data);
 };
@@ -38,5 +42,6 @@ export default {
   update,
   remove,
   // removeAll,
+  getWithComments,
   findByTitle,
 };
