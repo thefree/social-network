@@ -1,6 +1,5 @@
 import { current } from "daisyui/colors";
 import React, { useState, useEffect } from "react";
-// import PublicationDataService from "../services/PublicationService";
 import PublicationDataService from "../services/PublicationService";
 import AuthService from "../services/auth.service";
 

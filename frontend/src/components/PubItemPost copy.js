@@ -72,11 +72,7 @@ const PubItemPost = (props) => {
           >
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
           </svg>
-          <span className="font-semibold text-lg text-gray-600">
-            <a href="#my-modal" className="btn btn-primary">
-              Ajouter commentaire
-            </a>
-          </span>
+          <span className="font-semibold text-lg text-gray-600">komentari</span>
         </button>
 
         <button className="flex flex-row justify-center items-center w-full space-x-3">

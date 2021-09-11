@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from "react";
-import PublicationDataService from "../services/PublicationService";
+import CommentDataService from "../services/CommentService";
 
-const Publication = (props) => {
-  const initialPublicationState = {
+const Comment = (props) => {
+  const initialCommentState = {
     id: null,
-    title: "",
-    description: "",
-    published: false,
+    publicationId: null,
+    name: null,
+    text: "",
   };
-  const [currentPublication, setCurrentPublication] = useState(
-    initialPublicationState
-  );
+  const [currentComment, setCurrentComment] = useState(initialCommentState);
   const [message, setMessage] = useState("");
 
-  const getPublication = (id) => {
-    PublicationDataService.get(id)
+  const getComment = (id) => {
+    CommentDataService.get(id)
       .then((response) => {
-        setCurrentPublication(response.data);
+        setCurrentComment(response.data);
         console.log(response.data);
       })
       .catch((e) => {
@@ -25,25 +23,25 @@ const Publication = (props) => {
   };
 
   useEffect(() => {
-    getPublication(props.match.params.id);
+    getComment(props.match.params.id);
   }, [props.match.params.id]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setCurrentPublication({ ...currentPublication, [name]: value });
+    setCurrentComment({ ...currentComment, [name]: value });
   };
 
   const updatePublished = (status) => {
     var data = {
-      id: currentPublication.id,
-      title: currentPublication.title,
-      description: currentPublication.description,
+      id: currentComment.id,
+      text: currentComment.text,
+      //   name: currentComment.description,
       published: status,
     };
 
-    PublicationDataService.update(currentPublication.id, data)
+    CommentDataService.update(currentComment.id, data)
       .then((response) => {
-        setCurrentPublication({ ...currentPublication, published: status });
+        setCurrentComment({ ...currentComment, published: status });
         console.log(response.data);
       })
       .catch((e) => {
@@ -51,19 +49,19 @@ const Publication = (props) => {
       });
   };
 
-  const updatePublication = () => {
-    PublicationDataService.update(currentPublication.id, currentPublication)
+  const updateComment = () => {
+    CommentDataService.update(currentComment.id, currentComment)
       .then((response) => {
         console.log(response.data);
-        setMessage("The publication was updated successfully!");
+        setMessage("The comment was updated successfully!");
       })
       .catch((e) => {
         console.log(e);
       });
   };
 
-  const deletePublication = () => {
-    PublicationDataService.remove(currentPublication.id)
+  const deleteComment = () => {
+    CommentDataService.remove(currentComment.id)
       .then((response) => {
         console.log(response.data);
         props.history.push("/publications");
@@ -75,29 +73,29 @@ const Publication = (props) => {
 
   return (
     <div>
-      {currentPublication ? (
+      {currentComment ? (
         <div className="edit-form">
-          <h4>Publication</h4>
+          <h4>Commentaire</h4>
           <form>
-            <div className="form-group">
+            {/* <div className="form-group">
               <label htmlFor="title">Title</label>
               <input
                 type="text"
                 className="form-control"
                 id="title"
                 name="title"
-                value={currentPublication.title}
+                value={currentComment.title}
                 onChange={handleInputChange}
               />
-            </div>
+            </div> */}
             <div className="form-group">
-              <label htmlFor="description">Description</label>
+              <label htmlFor="description">Commentaire</label>
               <input
                 type="text"
                 className="form-control"
-                id="description"
-                name="description"
-                value={currentPublication.description}
+                id="text"
+                name="text"
+                value={currentComment.text}
                 onChange={handleInputChange}
               />
             </div>
@@ -106,11 +104,11 @@ const Publication = (props) => {
               <label>
                 <strong>Status:</strong>
               </label>
-              {currentPublication.published ? "Published" : "Pending"}
+              {currentComment.published ? "Published" : "Pending"}
             </div>
           </form>
 
-          {currentPublication.published ? (
+          {currentComment.published ? (
             <button
               className="badge badge-primary mr-2"
               onClick={() => updatePublished(false)}
@@ -126,17 +124,14 @@ const Publication = (props) => {
             </button>
           )}
 
-          <button
-            className="badge badge-danger mr-2"
-            onClick={deletePublication}
-          >
+          <button className="badge badge-danger mr-2" onClick={deleteComment}>
             Delete
           </button>
 
           <button
             type="submit"
             className="badge badge-success"
-            onClick={updatePublication}
+            onClick={updateComment}
           >
             Update
           </button>
@@ -145,11 +140,11 @@ const Publication = (props) => {
       ) : (
         <div>
           <br />
-          <p>Please click on a Publication...</p>
+          <p>Please click on a Comment...</p>
         </div>
       )}
     </div>
   );
 };
 
-export default Publication;
+export default Comment;
