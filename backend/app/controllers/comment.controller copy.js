@@ -2,7 +2,7 @@ const db = require("../models");
 const Comment = db.comments;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Comment
+// Create and Save a new Tutorial
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.name) {
@@ -32,10 +32,10 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all Comments from the database.
+// Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
-  const text = req.query.text;
-  var condition = text ? { text: { [Op.like]: `%${text}%` } } : null;
+  const title = req.query.title;
+  var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
   Comment.findAll({ where: condition })
     .then((data) => {
@@ -44,12 +44,12 @@ exports.findAll = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving Comments.",
+          err.message || "Some error occurred while retrieving Publication.",
       });
     });
 };
 
-// Find a single Comment with an id
+// Find a single Tutorial with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
@@ -59,12 +59,12 @@ exports.findOne = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving Comment with id=" + id,
+        message: "Error retrieving Publication with id=" + id,
       });
     });
 };
 
-// Update a Comment by the id in the request
+// Update a Tutorial by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
 
@@ -74,22 +74,22 @@ exports.update = (req, res) => {
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Comment was updated successfully.",
+          message: "Publication was updated successfully.",
         });
       } else {
         res.send({
-          message: `Cannot update Comment with id=${id}. Maybe Comment was not found or req.body is empty!`,
+          message: `Cannot update Publication with id=${id}. Maybe Publication was not found or req.body is empty!`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating Comment with id=" + id,
+        message: "Error updating Publication with id=" + id,
       });
     });
 };
 
-// Delete a Comment with the specified id in the request
+// Delete a Tutorial with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
 
@@ -99,39 +99,39 @@ exports.delete = (req, res) => {
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "Comment was deleted successfully!",
+          message: "Publication was deleted successfully!",
         });
       } else {
         res.send({
-          message: `Cannot delete Comment with id=${id}. Maybe Comment was not found!`,
+          message: `Cannot delete Publication with id=${id}. Maybe Publication was not found!`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Could not delete Comment with id=" + id,
+        message: "Could not delete Publication with id=" + id,
       });
     });
 };
 
-// Delete all Comments from the database.
+// Delete all Tutorials from the database.
 exports.deleteAll = (req, res) => {
   Comment.destroy({
     where: {},
     truncate: false,
   })
     .then((nums) => {
-      res.send({ message: `${nums} Comment were deleted successfully!` });
+      res.send({ message: `${nums} Publication were deleted successfully!` });
     })
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while removing all Comments.",
+          err.message || "Some error occurred while removing all Publications.",
       });
     });
 };
 
-// find all published Comment
+// find all published Tutorial
 exports.findAllPublished = (req, res) => {
   Comment.findAll({ where: { published: true } })
     .then((data) => {
@@ -140,7 +140,7 @@ exports.findAllPublished = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving Comments.",
+          err.message || "Some error occurred while retrieving Publications.",
       });
     });
 };
