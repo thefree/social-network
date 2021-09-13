@@ -6,9 +6,12 @@ const Menu = ({ showModeratorBoard, showAdminBoard, currentUser, logOut }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <nav className="bg-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* <nav className="bg-gray-800"> */}
+      <nav className="bg-groupofondblue">
+        {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> */}
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
           {/* <div className="mx-auto px-4 sm:px-6 lg:px-8"> */}
+          {/* <div className="flex items-center justify-between h-16"> */}
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
@@ -100,6 +103,12 @@ const Menu = ({ showModeratorBoard, showAdminBoard, currentUser, logOut }) => {
                       >
                         Ajouter Publication
                       </Link>
+                      <Link
+                        to={"/comments"}
+                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      >
+                        Gérer les Commentaires
+                      </Link>
                     </>
                   )}
                 </div>
@@ -143,7 +152,7 @@ const Menu = ({ showModeratorBoard, showAdminBoard, currentUser, logOut }) => {
                 </div>
               )}
             </div>
-            <div className="-mr-2 flex md:hidden">
+            <div className="mr-2 flex md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 type="button"
@@ -210,7 +219,7 @@ const Menu = ({ showModeratorBoard, showAdminBoard, currentUser, logOut }) => {
                       Home
                     </Link>
 
-                    {showModeratorBoard && (
+                    {/* {showModeratorBoard && (
                       <Link
                         to={"/mod"}
                         className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
@@ -235,7 +244,32 @@ const Menu = ({ showModeratorBoard, showAdminBoard, currentUser, logOut }) => {
                       >
                         User Board
                       </Link>
+                    )} */}
+
+                    {/*  */}
+                    {currentUser && (
+                      <>
+                        <Link
+                          to={"/publications"}
+                          className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                        >
+                          Gérer Publications
+                        </Link>
+                        <Link
+                          to={"/addPub"}
+                          className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                        >
+                          Ajouter Publication
+                        </Link>
+                        <Link
+                          to={"/comments"}
+                          className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                        >
+                          Gérer les Commentaires
+                        </Link>
+                      </>
                     )}
+                    {/* </div> */}
                   </div>
 
                   {currentUser ? (

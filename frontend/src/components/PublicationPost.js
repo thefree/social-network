@@ -113,11 +113,16 @@ const PublicationPost = (props) => {
               </div>
             ) : (
               <div>
-                <div className="form-group">
-                  <label htmlFor="text">Commentaire</label>
+                <div className="form-control my-5">
+                  <label htmlFor="text" className="label">
+                    <span className="text-groupoblue">
+                      Saisissez votre commentaire
+                    </span>
+                  </label>
                   <input
                     type="text"
-                    className="form-control"
+                    // placeholder="..."
+                    className="input input-lg input-bordered"
                     id="text"
                     required
                     value={comment.text}
@@ -126,20 +131,10 @@ const PublicationPost = (props) => {
                   />
                 </div>
 
-                {/* <div className="form-group">
-                  <label htmlFor="description">Text</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="description"
-                    required
-                    value={publication.description}
-                    onChange={handleInputChange}
-                    name="description"
-                  />
-                </div> */}
-
-                <button onClick={saveComment} className="btn btn-success">
+                <button
+                  onClick={saveComment}
+                  className="btn border-transparent bg-groupoblue hover:bg-groupopink hover:scale-110 hover:border-transparent"
+                >
                   Envoyer
                 </button>
               </div>

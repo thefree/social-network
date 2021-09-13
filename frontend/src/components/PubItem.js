@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 const PubItem = (props) => {
   const { id, title, description, publishername } = props;
   return (
-    <div className="bg-white w-full rounded-md shadow-md h-auto py-3 px-3 my-5">
-      <div className="w-full h-16 flex items-center flex justify-between ">
+    // <div className="bg-white w-full rounded-md shadow-md h-auto mx-8 py-3 px-3 my-5">
+    <div className="bg-white rounded-md shadow-md h-auto mx-8 py-3 px-3 my-5">
+      <div className="w-full h-16 flex items-center justify-between">
         <div className="flex">
           {/* <img
             className=" rounded-full w-10 h-10 mr-3"
@@ -22,7 +23,7 @@ const PubItem = (props) => {
             <p className="text-xs text-gray-500">45 mnt</p>
           </div>
         </div>
-        <svg
+        {/* <svg
           className="w-16"
           xmlns="http://www.w3.org/2000/svg"
           width="27"
@@ -37,16 +38,17 @@ const PubItem = (props) => {
           <circle cx="12" cy="12" r="1"></circle>
           <circle cx="19" cy="12" r="1"></circle>
           <circle cx="5" cy="12" r="1"></circle>
-        </svg>
+        </svg> */}
       </div>
-      <Link to={"/post/" + id} className="badge badge-warning">
+      {/* <Link to={"/post/" + id} className="badge badge-warning"> */}
+      <Link to={"/post/" + id} className="badge">
         <h3 className="text-md font-semibold ">{title}</h3>
       </Link>
       <Link to={"/post/" + id} className="">
         <p>{description}</p>
       </Link>
       <hr />
-      <div className="grid grid-cols-3 w-full px-5 px-5 my-3">
+      <div className="grid grid-cols-3 w-full px-5 my-3">
         <button className="flex flex-row justify-center items-center w-full space-x-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -77,10 +79,15 @@ const PubItem = (props) => {
           >
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
           </svg>
-          <span className="font-semibold text-lg text-gray-600">komentari</span>
+          <span className="font-semibold text-lg text-gray-600">
+            <Link to={"/post/" + id} className="">
+              commentaires
+            </Link>
+            {/* commentaires */}
+          </span>
         </button>
 
-        <button className="flex flex-row justify-center items-center w-full space-x-3">
+        {/* <button className="flex flex-row justify-center items-center w-full space-x-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="27"
@@ -99,9 +106,9 @@ const PubItem = (props) => {
             <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
           </svg>
           <span className="font-semibold text-lg text-gray-600">bagikan</span>
-        </button>
+        </button> */}
       </div>
-      <hr />
+      {/* <hr /> */}
     </div>
   );
 };

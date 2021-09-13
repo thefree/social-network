@@ -4,7 +4,8 @@ const PubItemPostComment = (props) => {
   const { id, text, commenter_name } = props;
   return (
     <div className="bg-gray-100 w-full rounded-md shadow-md h-auto py-3 px-3 mx-10 my-5">
-      <div className="w-full h-16 flex items-center flex justify-between ">
+      {/* <div className="bg-groupogris w-full rounded-md shadow-md h-auto py-3 px-3 mx-10 my-5"> */}
+      <div className="w-full h-16 flex items-center justify-between ">
         <div className="flex">
           {/* <img
             className=" rounded-full w-10 h-10 mr-3"
@@ -41,7 +42,7 @@ const PubItemPostComment = (props) => {
       {/* <h3 className="text-md font-semibold ">{title}</h3> */}
       <p>{text}</p>
       <hr />
-      <div className="grid grid-cols-3 w-full px-5 px-5 my-3">
+      <div className="grid grid-cols-3 w-full px-5 my-3">
         <button className="flex flex-row justify-center items-center w-full space-x-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
