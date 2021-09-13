@@ -106,14 +106,16 @@ const PublicationPost = (props) => {
           <div className="submit-form">
             {submitted ? (
               <div>
-                <h4>Ajout Réussi!</h4>
+                <h4>Ajout Commentaire Réussi!</h4>
                 {/* <button className="btn btn-success" onClick={newPublication}>
                   Add
                 </button> */}
               </div>
             ) : (
               <div>
-                <div className="form-control my-5">
+                {/* <div className="form-control my-5"> */}
+                <div className="form-group my-5">
+                  <h2 className="text-2xl">Ajouter un commentaire</h2>
                   <label htmlFor="text" className="label">
                     <span className="text-groupoblue">
                       Saisissez votre commentaire
@@ -122,7 +124,7 @@ const PublicationPost = (props) => {
                   <input
                     type="text"
                     // placeholder="..."
-                    className="input input-lg input-bordered"
+                    className="form-control input input-lg input-bordered"
                     id="text"
                     required
                     value={comment.text}

@@ -55,47 +55,56 @@ const AddPublication = () => {
   };
 
   return (
-    <div className="submit-form">
-      {submitted ? (
-        <div>
-          <h4>Ajout Réussi!</h4>
-          <button className="btn btn-success" onClick={newPublication}>
-            Add
-          </button>
-        </div>
-      ) : (
-        <div>
-          <div className="form-group">
-            <label htmlFor="title">Titre</label>
-            <input
-              type="text"
-              className="form-control"
-              id="title"
-              required
-              value={publication.title}
-              onChange={handleInputChange}
-              name="title"
-            />
+    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h2 className="text-2xl">Ajouter une Publication</h2>
+      <div className="submit-form">
+        {submitted ? (
+          <div>
+            <h4>Ajout Publication Réussi!</h4>
+            <button className="btn btn-success" onClick={newPublication}>
+              Add
+            </button>
           </div>
+        ) : (
+          <>
+            <div className=" my-5">
+              <div className="form-group">
+                <label htmlFor="title">Titre Publication</label>
+                <input
+                  type="text"
+                  // className="form-control"
+                  className="form-control input input-md input-bordered"
+                  id="title"
+                  required
+                  value={publication.title}
+                  onChange={handleInputChange}
+                  name="title"
+                />
+              </div>
 
-          <div className="form-group">
-            <label htmlFor="description">Text</label>
-            <input
-              type="text"
-              className="form-control"
-              id="description"
-              required
-              value={publication.description}
-              onChange={handleInputChange}
-              name="description"
-            />
-          </div>
-
-          <button onClick={savePublication} className="btn btn-success">
-            Submit
-          </button>
-        </div>
-      )}
+              <div className="form-group">
+                <label htmlFor="description">Text</label>
+                <input
+                  type="text"
+                  // className="form-control"
+                  className="form-control input input-lg input-bordered"
+                  id="description"
+                  required
+                  value={publication.description}
+                  onChange={handleInputChange}
+                  name="description"
+                />
+              </div>
+            </div>
+            <button
+              onClick={savePublication}
+              className="btn border-transparent bg-groupoblue hover:bg-groupopink hover:scale-110 hover:border-transparent"
+            >
+              Envoyer
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 };

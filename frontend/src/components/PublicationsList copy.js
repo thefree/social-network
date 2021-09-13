@@ -12,8 +12,6 @@ const PublicationsList = () => {
     retrievePublications();
   }, []);
 
-  // const history = useHistory();
-
   const onChangeSearchTitle = (e) => {
     const searchTitle = e.target.value;
     setSearchTitle(searchTitle);
@@ -39,12 +37,6 @@ const PublicationsList = () => {
   const setActivePublication = (publication, index) => {
     setCurrentPublication(publication);
     setCurrentIndex(index);
-    // history.push("#my-modal");
-    // history.replace("#my-modal");
-  };
-
-  const desactivePublication = () => {
-    setCurrentPublication(false);
   };
 
   const removeAllPublications = () => {
@@ -116,62 +108,43 @@ const PublicationsList = () => {
           Remove All
         </button>
       </div>
-      {currentPublication ? (
-        <div id="my-modal" className="modal modal-open">
-          <div className="modal-box">
-            <div className="col-md-6">
-              {/* {currentPublication ? ( */}
-              <div>
-                <h4>Publication</h4>
-                <div>
-                  <label>
-                    <strong>Title:</strong>
-                  </label>{" "}
-                  {currentPublication.title}
-                </div>
-                <div>
-                  <label>
-                    <strong>Description:</strong>
-                  </label>{" "}
-                  {currentPublication.description}
-                </div>
-                <div>
-                  <label>
-                    <strong>Status:</strong>
-                  </label>{" "}
-                  {currentPublication.published ? "Published" : "Pending"}
-                </div>
+      <div className="col-md-6">
+        {currentPublication ? (
+          <div>
+            <h4>Publication</h4>
+            <div>
+              <label>
+                <strong>Title:</strong>
+              </label>{" "}
+              {currentPublication.title}
+            </div>
+            <div>
+              <label>
+                <strong>Description:</strong>
+              </label>{" "}
+              {currentPublication.description}
+            </div>
+            <div>
+              <label>
+                <strong>Status:</strong>
+              </label>{" "}
+              {currentPublication.published ? "Published" : "Pending"}
+            </div>
 
-                <Link
-                  to={"/publications/" + currentPublication.id}
-                  className="badge badge-warning"
-                >
-                  Edit
-                </Link>
-              </div>
-              {/* ) : (
-              <div>
-                <br />
-                <p>Please click on a Tutorial...</p>
-              </div>
-            )} */}
-            </div>
-            <div className="modal-action">
-              {/* <a href="#" className="btn btn-primary">
-              Accept
-            </a> */}
-              <a href="#" className="btn" onClick={desactivePublication}>
-                Fermer
-              </a>
-            </div>
+            <Link
+              to={"/publications/" + currentPublication.id}
+              className="badge badge-warning"
+            >
+              Edit
+            </Link>
           </div>
-        </div>
-      ) : (
-        <div>
-          <br />
-          <p>Please click on a Tutorial...</p>
-        </div>
-      )}
+        ) : (
+          <div>
+            <br />
+            <p>Please click on a Tutorial...</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

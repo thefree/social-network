@@ -76,84 +76,71 @@ const Publication = (props) => {
   return (
     <div>
       {currentPublication ? (
-        // <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md mx-auto my-5 p-10 card bg-base-200">
-          <h4 className="text-2xl my-10">Edition: Publication</h4>
+        <div className="edit-form">
+          <h4>Publication</h4>
           <form>
-            <div className="form-control">
-              <label htmlFor="title" className="label">
-                <span class="label-text">Titre</span>
-              </label>
+            <div className="form-group">
+              <label htmlFor="title">Title</label>
               <input
                 type="text"
-                className="input"
+                className="form-control"
                 id="title"
                 name="title"
                 value={currentPublication.title}
                 onChange={handleInputChange}
               />
             </div>
-            <div className="form-control">
-              <label htmlFor="description" className="label">
-                <span class="label-text">Description</span>
-              </label>
-              <textarea
-                class="textarea h-24 textarea-bordered"
-                id="description"
-                name="description"
-                value={currentPublication.description}
-                onChange={handleInputChange}
-              ></textarea>
-              {/* <input
+            <div className="form-group">
+              <label htmlFor="description">Description</label>
+              <input
                 type="text"
                 className="form-control"
                 id="description"
                 name="description"
                 value={currentPublication.description}
                 onChange={handleInputChange}
-              /> */}
+              />
             </div>
 
-            <div className="my-5">
+            <div className="form-group">
               <label>
-                <strong>Status: </strong>
+                <strong>Status:</strong>
               </label>
               {currentPublication.published ? "Published" : "Pending"}
             </div>
           </form>
-          <div>
-            {currentPublication.published ? (
-              <button
-                className="badge badge-primary mr-2"
-                onClick={() => updatePublished(false)}
-              >
-                UnPublish
-              </button>
-            ) : (
-              <button
-                className="badge badge-primary mr-2"
-                onClick={() => updatePublished(true)}
-              >
-                Publish
-              </button>
-            )}
 
+          {currentPublication.published ? (
             <button
-              className="badge badge-danger mr-2"
-              onClick={deletePublication}
+              className="badge badge-primary mr-2"
+              onClick={() => updatePublished(false)}
             >
-              Delete
+              UnPublish
             </button>
+          ) : (
+            <button
+              className="badge badge-primary mr-2"
+              onClick={() => updatePublished(true)}
+            >
+              Publish
+            </button>
+          )}
 
-            <button
-              type="submit"
-              className="badge badge-success"
-              onClick={updatePublication}
-            >
-              Update
-            </button>
-            <p>{message}</p>
-          </div>
+          <button
+            className="badge badge-danger mr-2"
+            onClick={deletePublication}
+          >
+            Delete
+          </button>
+
+          <button
+            type="submit"
+            className="badge badge-success"
+            onClick={updatePublication}
+          >
+            Update
+          </button>
+          <p>{message}</p>
         </div>
       ) : (
         <div>

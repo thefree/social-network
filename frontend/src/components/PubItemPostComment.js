@@ -3,7 +3,8 @@ import React from "react";
 const PubItemPostComment = (props) => {
   const { id, text, commenter_name } = props;
   return (
-    <div className="bg-gray-100 w-full rounded-md shadow-md h-auto py-3 px-3 mx-10 my-5">
+    <div className="bg-gray-100 rounded-md shadow-md h-auto py-3 px-3 mx-10 my-5">
+      {/* <div className="bg-gray-100 w-full rounded-md shadow-md h-auto py-3 px-3 mx-10 my-5"> */}
       {/* <div className="bg-groupogris w-full rounded-md shadow-md h-auto py-3 px-3 mx-10 my-5"> */}
       <div className="w-full h-16 flex items-center justify-between ">
         <div className="flex">
@@ -97,7 +98,7 @@ const PubItemPostComment = (props) => {
           <span className="font-semibold text-lg text-gray-600">bagikan</span>
         </button> */}
       </div>
-      <hr />
+      {/* <hr /> */}
     </div>
   );
 };
