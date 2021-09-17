@@ -1,9 +1,6 @@
 module.exports = (app) => {
   const { authJwt } = require("../middleware");
   const publications = require("../controllers/publication.controller.js");
-  const multer = require("../middleware/multer-config");
-  // const express = require("express");
-  // const path = require("path");
 
   app.use(function (req, res, next) {
     res.header(
@@ -13,16 +10,10 @@ module.exports = (app) => {
     next();
   });
 
-  // app.use("/images", express.static(path.join(__dirname, "images")));
-
   var router = require("express").Router();
 
   // Create a new Publication
-  // router.post("/", publications.create);
-  router.post("/", [authJwt.verifyToken], multer, publications.create);
-
-  // router.post("/nofile", publications.create);
-  router.post("/nofile", [authJwt.verifyToken], publications.create);
+  router.post("/", publications.create);
 
   // Retrieve all Publication
   router.get("/", publications.findAll);

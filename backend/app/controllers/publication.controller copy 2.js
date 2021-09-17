@@ -15,32 +15,19 @@ exports.create = (req, res) => {
     return;
   }
 
-  // const publication = {
-  //   title: req.body.title,
-  //   description: req.body.description,
-  //   // imageUrl: req.body.myfile,
-
-  //   imageUrl: `${req.protocol}://${req.get("host")}/images/${
-  //     req.file.filename
-  //   }`,
-
-  //   published: req.body.published ? req.body.published : false,
-  //   userId: req.body.userId,
-  // };
-
-  const publication = req.file
-    ? {
-        title: req.body.title,
-        description: req.body.description,
-        imageUrl: `${req.protocol}://${req.get("host")}/images/${
-          req.file.filename
-        }`,
-        userId: req.body.userId,
-      }
-    : { ...req.body };
+  // Create a Publication
+  const publication = {
+    title: req.body.title,
+    description: req.body.description,
+    // imageUrl: req.body.myfile,
+    imageUrl: `${req.protocol}://${req.get("host")}/images/${
+      req.file.filename
+    }`,
+    published: req.body.published ? req.body.published : false,
+    userId: req.body.userId,
+  };
 
   // Save Publications in the database
-
   Publication.create(publication)
     .then((data) => {
       res.send(data);

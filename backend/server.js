@@ -1,10 +1,12 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 
 const corsOptions = {
   origin: "http://localhost:8081",
+  // origin: "http://localhost:5000",
 };
 
 app.use(cors(corsOptions));
@@ -14,6 +16,8 @@ app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
+
+app.use("/images", express.static(path.join(__dirname, "images")));
 
 // database
 const db = require("./app/models");
@@ -28,7 +32,7 @@ db.sequelize.sync();
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to Groupomania" });
 });
 
 // routes
@@ -37,7 +41,7 @@ require("./app/routes/user.routes")(app);
 require("./app/routes/publication.routes")(app);
 require("./app/routes/comment.routes")(app);
 
-initial();
+// initial();
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
@@ -45,19 +49,19 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
-function initial() {
-  Role.create({
-    id: 1,
-    name: "user",
-  });
+// function initial() {
+//   Role.create({
+//     id: 1,
+//     name: "user",
+//   });
 
-  Role.create({
-    id: 2,
-    name: "moderator",
-  });
+//   Role.create({
+//     id: 2,
+//     name: "moderator",
+//   });
 
-  Role.create({
-    id: 3,
-    name: "admin",
-  });
-}
+//   Role.create({
+//     id: 3,
+//     name: "admin",
+//   });
+// }
