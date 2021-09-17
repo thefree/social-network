@@ -33,30 +33,25 @@ const AddPublication = () => {
   };
 
   const savePublication = async () => {
-    let data = null;
-    if (!currentFile) {
-      data = {
-        title: publication.title,
-        description: publication.description,
-        userId: currentUser.id,
-      };
-    } else {
-      data = new FormData();
-      data.append("title", publication.title);
-      data.append("description", publication.description);
-      data.append("userId", currentUser.id);
-      data.append("currentFile", currentFile);
-    }
+    // var data = {
+    //   title: publication.title,
+    //   description: publication.description,
+    //   myfile: publication.myfile,
+    //   userId: currentUser.id,
+    // };
 
-    // const formdata = new FormData();
-    // formdata.append("title", publication.title);
-    // formdata.append("description", publication.description);
-    // // formdata.append("myfile", publication.myfile);
-    // formdata.append("userId", currentUser.id);
-    // formdata.append("currentFile", currentFile);
+    const formdata = new FormData();
+    formdata.append("title", publication.title);
+    formdata.append("description", publication.description);
+    // formdata.append("myfile", publication.myfile);
+    formdata.append("userId", currentUser.id);
+    formdata.append("currentFile", currentFile);
 
-    // PublicationDataService.create(formdata);
-    PublicationDataService.create(data)
+    // for (var value of formdata.values()) {
+    //   console.log(value);
+    // }
+
+    PublicationDataService.create(formdata)
       .then((response) => {
         setPublication({
           id: response.data.id,
@@ -65,7 +60,7 @@ const AddPublication = () => {
           published: response.data.published,
         });
         setSubmitted(true);
-        setCurrentFile(undefined);
+        // setCurrentFile(response.data.currentFile);
         console.log(response.data);
       })
       .catch((e) => {

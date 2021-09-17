@@ -82,7 +82,7 @@ const Publication = (props) => {
           <form>
             <div className="form-control">
               <label htmlFor="title" className="label">
-                <span class="label-text">Titre</span>
+                <span className="label-text">Titre</span>
               </label>
               <input
                 type="text"
@@ -95,10 +95,10 @@ const Publication = (props) => {
             </div>
             <div className="form-control">
               <label htmlFor="description" className="label">
-                <span class="label-text">Description</span>
+                <span className="label-text">Description</span>
               </label>
               <textarea
-                class="textarea h-24 textarea-bordered"
+                className="textarea h-24 textarea-bordered"
                 id="description"
                 name="description"
                 value={currentPublication.description}

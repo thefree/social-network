@@ -23,12 +23,9 @@ const create = async (data) => {
   const user = await JSON.parse(localStorage.getItem("user"));
   const myHeaders = {
     "x-access-token": user.accessToken,
+    "Content-Type": "multipart/form-data",
   };
-  if (typeof data.has === "function") {
-    return axios.post(API_URL + "/", data, { headers: myHeaders });
-  } else {
-    return axios.post(API_URL + "/nofile", data, { headers: myHeaders });
-  }
+  return axios.post(API_URL + "/", data, { headers: myHeaders });
 };
 
 const update = (id, data) => {

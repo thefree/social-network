@@ -1,7 +1,7 @@
 import React from "react";
 
 const PubItemPost = (props) => {
-  const { id, title, description, publishername } = props;
+  const { id, title, description, publishername, image } = props;
   return (
     <div className="bg-white rounded-md shadow-md h-auto mx-8 py-3 px-3 my-5">
       {/* <div className="bg-white w-full rounded-md shadow-md h-auto py-3 px-3 my-5"> */}
@@ -41,6 +41,7 @@ const PubItemPost = (props) => {
       </div>
       <h3 className="text-md font-semibold ">{title}</h3>
       <p>{description}</p>
+      <img src={image} className="max-w-md" />
       <hr />
       <div className="grid grid-cols-3 w-full px-5 my-3">
         <button className="flex flex-row justify-center items-center w-full space-x-3">

@@ -1,38 +1,114 @@
 import React, { useState, useEffect } from "react";
 import PublicationDataService from "../services/PublicationService";
 import { Link } from "react-router-dom";
+import AuthService from "../services/auth.service";
 
 const PublicationsList = () => {
   const [publications, setPublications] = useState([]);
   const [currentPublication, setCurrentPublication] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchTitle, setSearchTitle] = useState("");
+  const [currentUser, setCurrentUser] = useState(undefined);
+  const [adminUser, setAdminUser] = useState(false);
+  const [moderatorUser, setModeratorUser] = useState(false);
+  const [connectedUser, setConnectedUser] = useState(false);
 
   useEffect(() => {
-    retrievePublications();
+    let isMounted = true;
+    const getUser = async () => {
+      // const user = await AuthService.getCurrentUser();
+      // let result = await AuthService.getCurrentUser();
+
+      // return await AuthService.getCurrentUser();
+      return await AuthService.getCurrentUserPromise();
+      // return result;
+      //  AuthService.getCurrentUser();
+      // console.log("USER_INFO_result", result);
+    };
+
+    const user = getUser()
+      .then((response) => {
+        console.log("USER_INFO_user_response", response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+
+    console.log("USER_INFO_user", user);
+
+    // if (user) {
+    //   if (isMounted) {
+    //     // setCurrentUser(user);
+    //     console.log("USER_INFO_name", user?.username);
+
+    //     setAdminUser(user.roles?.includes("ROLE_ADMIN"));
+    //     setModeratorUser(user.roles?.includes("ROLE_MODERATOR"));
+    //     setConnectedUser(user.roles?.includes("ROLE_USER"));
+    //   }
+    // }
+
+    // retrievePublicationsByRole(isMounted);
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
-  // const history = useHistory();
+  const retrievePublicationsByRole = (isMounted) => {
+    // if (adminUser || moderatorUser) {
+    console.log("STATE_INFO_moderator", moderatorUser);
+    console.log("STATE_INFO_isMounted", isMounted);
+
+    if (adminUser) {
+      PublicationDataService.getAll()
+        .then((response) => {
+          setPublications(response.data);
+          console.log(response.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+
+    if (isMounted) {
+      if (moderatorUser) {
+        PublicationDataService.getAll()
+          .then((response) => {
+            setPublications(response.data);
+            console.log(response.data);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
+    }
+
+    if (connectedUser) {
+      PublicationDataService.getAllByUser()
+        .then((response) => {
+          setPublications(response.data);
+          console.log(response.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+  };
+
+  // retrievePublicationsByRole();
+
+  // retrievePublications();
 
   const onChangeSearchTitle = (e) => {
     const searchTitle = e.target.value;
     setSearchTitle(searchTitle);
   };
 
-  const retrievePublications = () => {
-    // PublicationDataService.getAll()
-    PublicationDataService.getAllByUser()
-      .then((response) => {
-        setPublications(response.data);
-        console.log(response.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
+  // retrievePublications();
 
   const refreshList = () => {
-    retrievePublications();
+    // retrievePublications();
+    retrievePublicationsByRole();
     setCurrentPublication(null);
     setCurrentIndex(-1);
   };
@@ -69,6 +145,8 @@ const PublicationsList = () => {
         console.log(e);
       });
   };
+
+  // retrievePublications();
 
   return (
     // <div className="list row">

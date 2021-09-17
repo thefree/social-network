@@ -87,6 +87,7 @@ const PublicationPost = (props) => {
           description={currentPublication.description}
           // publishername={publishername.username}
           publishername={currentPublication.user?.username}
+          image={currentPublication.imageUrl}
         />
       </main>
       <aside className="">

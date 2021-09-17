@@ -89,9 +89,7 @@ const Menu = ({ showModeratorBoard, showAdminBoard, currentUser, logOut }) => {
                   )} */}
 
                   {/*  */}
-
                   {currentUser && (
-                    // {(showModeratorBoard || showAdminBoard) && (
                     <>
                       <Link
                         to={"/publications"}
@@ -210,11 +208,9 @@ const Menu = ({ showModeratorBoard, showAdminBoard, currentUser, logOut }) => {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            {/* {(ref) => ( */}
-            {() => (
+            {(ref) => (
               <div className="md:hidden" id="mobile-menu">
-                {/* <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3"> */}
-                <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                   <div className="ml-10 flex flex-col items-baseline">
                     <Link
                       to={"/home"}

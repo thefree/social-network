@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const PubItem = (props) => {
-  const { id, title, description, publishername } = props;
+  const { id, title, description, publishername, image } = props;
   return (
     // <div className="bg-white w-full rounded-md shadow-md h-auto mx-8 py-3 px-3 my-5">
     <div className="bg-white rounded-md shadow-md h-auto mx-8 py-3 px-3 my-5">
@@ -47,6 +47,7 @@ const PubItem = (props) => {
       <Link to={"/post/" + id} className="">
         <p>{description}</p>
       </Link>
+      <img src={image} className="max-w-md" />
       <hr />
       <div className="grid grid-cols-3 w-full px-5 my-3">
         <button className="flex flex-row justify-center items-center w-full space-x-3">

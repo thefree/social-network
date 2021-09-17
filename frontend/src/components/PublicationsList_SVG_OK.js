@@ -20,8 +20,7 @@ const PublicationsList = () => {
   };
 
   const retrievePublications = () => {
-    // PublicationDataService.getAll()
-    PublicationDataService.getAllByUser()
+    PublicationDataService.getAll()
       .then((response) => {
         setPublications(response.data);
         console.log(response.data);

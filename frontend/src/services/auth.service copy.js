@@ -33,19 +33,9 @@ const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user"));
 };
 
-const getCurrentUserPromise = () => {
-  return new Promise((resolve) => {
-    let user = JSON.parse(localStorage.getItem("user"));
-
-    resolve(user);
-    // console.log("La promesse lente est terminée");
-  });
-};
-
 export default {
   register,
   login,
   logout,
   getCurrentUser,
-  getCurrentUserPromise,
 };
