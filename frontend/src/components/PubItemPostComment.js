@@ -1,7 +1,7 @@
 import React from "react";
 
 const PubItemPostComment = (props) => {
-  const { id, text, commenter_name } = props;
+  const { text, commenter_name } = props;
   return (
     <div className="bg-gray-100 rounded-md shadow-md h-auto py-3 px-3 mx-10 my-5">
       {/* <div className="bg-gray-100 w-full rounded-md shadow-md h-auto py-3 px-3 mx-10 my-5"> */}
@@ -15,7 +15,10 @@ const PubItemPostComment = (props) => {
           /> */}
           <div className="avatar">
             <div className="mb-8 rounded-full w-10 h-10">
-              <img src="http://daisyui.com/tailwind-css-component-profile-1@40w.png" />
+              <img
+                src="http://daisyui.com/tailwind-css-component-profile-1@40w.png"
+                alt=""
+              />
             </div>
           </div>
           <div>

@@ -31,9 +31,21 @@ const create = async (data) => {
   }
 };
 
-const update = (id, data) => {
-  return axios.put(API_URL + `/${id}`, data);
+const update = async (id, data) => {
+  const user = await JSON.parse(localStorage.getItem("user"));
+  const myHeaders = {
+    "x-access-token": user.accessToken,
+  };
+  if (typeof data.has === "function") {
+    return axios.put(API_URL + `/${id}`, data, { headers: myHeaders });
+  } else {
+    return axios.put(API_URL + `/nofile/${id}`, data, { headers: myHeaders });
+  }
 };
+
+// const update = (id, data) => {
+//   return axios.put(API_URL + `/${id}`, data);
+// };
 
 const remove = (id) => {
   return axios.delete(API_URL + `/${id}`);

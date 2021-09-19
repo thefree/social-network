@@ -15,7 +15,10 @@ const PubItem = (props) => {
           /> */}
           <div className="avatar">
             <div className="mb-8 rounded-full w-10 h-10">
-              <img src="http://daisyui.com/tailwind-css-component-profile-1@40w.png" />
+              <img
+                src="http://daisyui.com/tailwind-css-component-profile-1@40w.png"
+                alt=""
+              />
             </div>
           </div>
           <div>
@@ -47,7 +50,7 @@ const PubItem = (props) => {
       <Link to={"/post/" + id} className="">
         <p>{description}</p>
       </Link>
-      <img src={image} className="max-w-md" />
+      <img src={image} className="max-w-md" alt="" />
       <hr />
       <div className="grid grid-cols-3 w-full px-5 my-3">
         <button className="flex flex-row justify-center items-center w-full space-x-3">

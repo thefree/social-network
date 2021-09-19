@@ -11,6 +11,7 @@ const Publication = (props) => {
   const [currentPublication, setCurrentPublication] = useState(
     initialPublicationState
   );
+  const [currentFile, setCurrentFile] = useState();
   const [message, setMessage] = useState("");
 
   const getPublication = (id) => {
@@ -33,6 +34,10 @@ const Publication = (props) => {
     setCurrentPublication({ ...currentPublication, [name]: value });
   };
 
+  const handleInputFileChange = (event) => {
+    setCurrentFile(event.target.files[0]);
+  };
+
   const updatePublished = (status) => {
     var data = {
       id: currentPublication.id,
@@ -52,8 +57,25 @@ const Publication = (props) => {
   };
 
   const updatePublication = () => {
-    PublicationDataService.update(currentPublication.id, currentPublication)
+    let data = null;
+    if (!currentFile) {
+      data = {
+        id: currentPublication.id,
+        title: currentPublication.title,
+        description: currentPublication.description,
+        // userId: currentUser.id,
+      };
+    } else {
+      data = new FormData();
+      data.append("title", currentPublication.title);
+      data.append("description", currentPublication.description);
+      data.append("id", currentPublication.id);
+      data.append("currentFile", currentFile);
+    }
+
+    PublicationDataService.update(currentPublication.id, data)
       .then((response) => {
+        getPublication(currentPublication.id);
         console.log(response.data);
         setMessage("The publication was updated successfully!");
       })
@@ -113,7 +135,28 @@ const Publication = (props) => {
                 onChange={handleInputChange}
               /> */}
             </div>
-
+            {/* ============= GESTION IMAGE ================== */}
+            <img
+              src={currentPublication.imageUrl}
+              className="max-w-md"
+              alt=""
+            />
+            <div className="form-control">
+              <label htmlFor="myfile">Ajouter ou remplacer une image</label>
+              <input
+                type="file"
+                // className="form-control"
+                className="form-control input input-md input-bordered"
+                id="myfile"
+                // required
+                // value={currentFile}
+                // onChange={handleInputChange}
+                onChange={handleInputFileChange}
+                name="myfile"
+                accept="image/png, image/jpeg"
+              />
+            </div>
+            {/* =============== FIN GESTION IMAGE ================ */}
             <div className="my-5">
               <label>
                 <strong>Status: </strong>
