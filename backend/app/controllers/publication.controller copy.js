@@ -128,17 +128,7 @@ exports.findByPk = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  const publication = req.file
-    ? {
-        title: req.body.title,
-        description: req.body.description,
-        imageUrl: `${req.protocol}://${req.get("host")}/images/${
-          req.file.filename
-        }`,
-      }
-    : { ...req.body };
-
-  Publication.update(publication, {
+  Publication.update(req.body, {
     where: { id: id },
   })
     .then((num) => {

@@ -40,7 +40,10 @@ module.exports = (app) => {
   router.get("/:id", publications.findOne);
 
   // Update a Publication with id
-  router.put("/:id", publications.update);
+  router.put("/:id", [authJwt.verifyToken], multer, publications.update);
+
+  // Update a Publication with id
+  router.put("/nofile/:id", [authJwt.verifyToken], multer, publications.update);
 
   // Delete a Publication with id
   router.delete("/:id", publications.delete);
