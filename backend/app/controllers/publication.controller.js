@@ -15,19 +15,6 @@ exports.create = (req, res) => {
     return;
   }
 
-  // const publication = {
-  //   title: req.body.title,
-  //   description: req.body.description,
-  //   // imageUrl: req.body.myfile,
-
-  //   imageUrl: `${req.protocol}://${req.get("host")}/images/${
-  //     req.file.filename
-  //   }`,
-
-  //   published: req.body.published ? req.body.published : false,
-  //   userId: req.body.userId,
-  // };
-
   const publication = req.file
     ? {
         title: req.body.title,
@@ -70,66 +57,18 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Retrieve all Publications from the database.
-exports.findAllByUser = (req, res) => {
+// Retrieve all Publications By USER from the database.
+exports.findAllByUser = async (req, res) => {
   const userid = req.userId;
-  var isModOrAdm = undefined;
-  var role = "";
   const title = req.query.title;
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
-  // const userid = authJwt.isModOrAdm ? "" : req.userId;
-
-  function setRole(lerole) {
-    // console.log("FUNC_1 setRole", role);
-    role = lerole;
-    return role;
-    // console.log("FUNC_2 setRole", role);
-  }
-
-  isModOrAdm = User.findByPk(req.userId).then((user) => {
-    user.getRoles().then((roles) => {
-      for (let i = 0; i < roles.length; i++) {
-        if (roles[i].name === "moderator") {
-          setRole(roles[i].name);
-          // return;
-
-          console.log("TEST_ROLE_MOD: ", roles[i].name);
-          console.log("TEST_ROLE_MOD_2 :", setRole(roles[i].name));
-          return setRole(roles[i].name);
-
-          // return true;
-        }
-
-        if (roles[i].name === "admin") {
-          setRole(roles[i].name);
-          // return;
-
-          console.log("TEST_ROLE_ADM: ", roles[i].name);
-          console.log("TEST_ROLE_MOD_2: ", setRole(roles[i].name));
-          return setRole(roles[i].name);
-
-          // return true;
-        }
-      }
-    });
-  });
-
-  // isModOrAdm.then((result) => console.log("IS_MOD_OR_ADM", result));
-
-  isModOrAdm.then(function (result) {
-    console.log("IS_MOD_OR_ADM", result); // "Some User token"
-  });
-
-  console.log("IS_ROLE", role);
+  var isModOrAdm = await authJwt.isModOrAdm(userid);
 
   if (isModOrAdm) {
     Publication.findAll({
       include: { model: User, as: "user" },
       where: condition,
-      // where: {
-      //   [Op.and]: [condition, { userId: userid }],
-      // },
     })
       .then((data) => {
         res.send(data);
@@ -137,14 +76,11 @@ exports.findAllByUser = (req, res) => {
       .catch((err) => {
         console.log("Probème sur isModOrAdm");
       });
-    // } else if (userid) {
   }
 
-  // if (!isModOrAdm) {
   if (!isModOrAdm) {
     Publication.findAll({
       include: { model: User, as: "user" },
-      // where: condition,
       where: {
         [Op.and]: [condition, { userId: userid }],
       },

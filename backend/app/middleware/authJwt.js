@@ -89,49 +89,27 @@ const isModeratorOrAdmin = (req, res, next) => {
   });
 };
 
-// const isModOrAdm = (req, res, next) => {
-isModOrAdm = (req, userid) => {
-  console.log("IS_MODADM_FUNC ENTER:", userid);
-  // var response = "user";
-
-  User.findByPk(userid)
-    .then((user) => {
-      user.getRoles().then((roles) => {
-        let response = "";
-        for (let i = 0; i < roles.length; i++) {
-          if (roles[i].name === "moderator") {
-            // next();
-            // return true;
-            let response = "";
-            console.log("USER ROLES:", roles[i].name);
-            req.role = roles[i].name;
-            response = roles[i].name;
-            return response;
-            // return response;
+const isModOrAdm = async (userid) => {
+  return new Promise((resolve, reject) => {
+    let isadminOrMod = false;
+    User.findByPk(userid)
+      .then((user) => {
+        user.getRoles().then((roles) => {
+          for (let i = 0; i < roles.length; i++) {
+            if (roles[i].name === "moderator") {
+              isadminOrMod = true;
+            }
+            if (roles[i].name === "admin") {
+              isadminOrMod = true;
+            }
           }
-
-          if (roles[i].name === "admin") {
-            // next();
-            // return true;
-            let response = "";
-            console.log("USER ROLES:", roles[i].name);
-            req.role = roles[i].name;
-
-            response = roles[i].name;
-            return response;
-            // return response;
-            // return "FRITZ";
-          }
-        }
-        // return false;
-        return response;
+          resolve(isadminOrMod);
+        });
+      })
+      .catch((err) => {
+        console.log("IS_MODADM_FUNC pas de user:", userid);
       });
-    })
-    .catch((err) => {
-      console.log("IS_MODADM_FUNC pas de user:", userid);
-    });
-  // return response;
-  // return req.role;
+  });
 };
 
 const authJwt = {
