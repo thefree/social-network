@@ -18,7 +18,8 @@ const CommentsList = () => {
   };
 
   const retrieveComments = () => {
-    CommentDataService.getAll()
+    // CommentDataService.getAll()
+    CommentDataService.getAllByUser()
       .then((response) => {
         setComments(response.data);
         console.log(response.data);

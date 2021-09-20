@@ -44,6 +44,7 @@ const PublicationPost = (props) => {
       name: currentUser.username,
       text: comment.text,
       publicationId: currentPublication.id,
+      userId: currentUser.id,
     };
 
     CommentDataService.create(data)

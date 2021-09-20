@@ -7,20 +7,24 @@ const getAll = () => {
   return axios.get(API_URL + "/");
 };
 
+const getAllByUser = () => {
+  return axios.get(API_URL + "/byuser", { headers: authHeader() });
+};
+
 const get = (id) => {
   return axios.get(API_URL + `/${id}`);
 };
 
 const create = (data) => {
-  return axios.post(API_URL + "/", data);
+  return axios.post(API_URL + "/", data, { headers: authHeader() });
 };
 
 const update = (id, data) => {
-  return axios.put(API_URL + `/${id}`, data);
+  return axios.put(API_URL + `/${id}`, data, { headers: authHeader() });
 };
 
 const remove = (id) => {
-  return axios.delete(API_URL + `/${id}`);
+  return axios.delete(API_URL + `/${id}`, { headers: authHeader() });
 };
 
 // const removeAll = () => {
@@ -33,6 +37,7 @@ const findByText = (text) => {
 
 export default {
   getAll,
+  getAllByUser,
   get,
   create,
   update,
