@@ -31,14 +31,6 @@ db.publications.belongsTo(db.user, {
 });
 
 //
-db.user.hasMany(db.comments, { as: "comments" });
-
-db.comments.belongsTo(db.user, {
-  foreignKey: "userId",
-  as: "user",
-});
-
-//
 db.publications.hasMany(db.comments, { as: "comments" });
 
 db.comments.belongsTo(db.publications, {

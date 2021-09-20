@@ -1,9 +1,10 @@
-const { user } = require("../models");
+// const { user } = require("../models");
+const { authJwt } = require("../middleware");
 const db = require("../models");
+
 const Publication = db.publications;
 const User = db.user;
 const Op = db.Sequelize.Op;
-const { authJwt } = require("../middleware");
 
 // Create and Save a new Publications
 exports.create = (req, res) => {

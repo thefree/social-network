@@ -1,8 +1,5 @@
-const { authJwt } = require("../middleware");
 const db = require("../models");
-
 const Comment = db.comments;
-const User = db.user;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Comment
@@ -16,7 +13,6 @@ exports.create = (req, res) => {
   }
   // Create a Comment
   const comment = {
-    userId: req.body.userId,
     name: req.body.name,
     text: req.body.text,
     publicationId: req.body.publicationId,
@@ -51,42 +47,6 @@ exports.findAll = (req, res) => {
           err.message || "Some error occurred while retrieving Comments.",
       });
     });
-};
-
-// Retrieve all Comments By USER from the database. (Utilisateurs ENREGISTRÉS)
-exports.findAllByUser = async (req, res) => {
-  const userid = req.userId;
-  const text = req.query.text;
-  var condition = text ? { text: { [Op.like]: `%${text}%` } } : null;
-
-  var isModOrAdm = await authJwt.isModOrAdm(userid);
-
-  if (isModOrAdm) {
-    Comment.findAll({
-      where: condition,
-    })
-      .then((data) => {
-        res.send(data);
-      })
-      .catch((err) => {
-        console.log("Probème sur isModOrAdm");
-      });
-  }
-
-  if (!isModOrAdm) {
-    Comment.findAll({
-      include: { model: User, as: "user" },
-      where: {
-        [Op.and]: [condition, { userId: userid }],
-      },
-    })
-      .then((data) => {
-        res.send(data);
-      })
-      .catch((err) => {
-        console.log("Probème sur NOT isModOrAdm");
-      });
-  }
 };
 
 // Find a single Comment with an id

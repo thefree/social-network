@@ -2,6 +2,8 @@ module.exports = (app) => {
   const { authJwt } = require("../middleware");
   const publications = require("../controllers/publication.controller.js");
   const multer = require("../middleware/multer-config");
+  // const express = require("express");
+  // const path = require("path");
 
   app.use(function (req, res, next) {
     res.header(
@@ -10,6 +12,8 @@ module.exports = (app) => {
     );
     next();
   });
+
+  // app.use("/images", express.static(path.join(__dirname, "images")));
 
   var router = require("express").Router();
 
@@ -42,10 +46,10 @@ module.exports = (app) => {
   router.put("/nofile/:id", [authJwt.verifyToken], multer, publications.update);
 
   // Delete a Publication with id
-  router.delete("/:id", [authJwt.verifyToken], publications.delete);
+  router.delete("/:id", publications.delete);
 
   // Delete all Publication
-  router.delete("/", [authJwt.verifyToken], publications.deleteAll);
+  router.delete("/", publications.deleteAll);
 
   app.use("/api/publications", router);
 };
