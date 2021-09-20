@@ -82,12 +82,15 @@ const Comment = (props) => {
                 <span className="label-text">Commentaire</span>
               </label>
               <textarea
-                type="text"
-                className="input"
+                // type="text"
+                className=""
                 id="text"
                 name="text"
                 value={currentComment.text}
                 onChange={handleInputChange}
+                rows="5"
+                cols="50"
+                maxLength="250"
               ></textarea>
             </div>
             <div className="my-5">
@@ -101,27 +104,30 @@ const Comment = (props) => {
           <div>
             {currentComment.published ? (
               <button
-                className="badge badge-primary mr-2"
+                className="badge badge-secondary mr-2"
                 onClick={() => updatePublished(false)}
               >
                 UnPublish
               </button>
             ) : (
               <button
-                className="badge badge-primary mr-2"
+                className="badge badge-secondary mr-2"
                 onClick={() => updatePublished(true)}
               >
                 Publish
               </button>
             )}
 
-            <button className="badge badge-danger mr-2" onClick={deleteComment}>
+            <button
+              className="badge badge-warning mr-2"
+              onClick={deleteComment}
+            >
               Delete
             </button>
 
             <button
               type="submit"
-              className="badge badge-success"
+              className="badge badge-primary"
               onClick={updateComment}
             >
               Update

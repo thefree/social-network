@@ -96,25 +96,23 @@ const CommentsList = () => {
             onChange={onChangeSearchText}
           />
           <button
-            className="btn btn-outline-secondary"
+            className="btn btn-primary"
             type="button"
             onClick={findByText}
           >
             Search
           </button>
-          <button className="btn btn-secondary" onClick={refreshList}>
+          <button className="btn bg-groupopink" onClick={refreshList}>
             reset
           </button>
         </div>
         <hr className="my-5" />
       </div>
       <hr />
-
       <div className="">
-        <h4 className="text-lg text-groupoblue">Liste des Commentaires</h4>
-
+        <h4 className="text-lg mb-5">Liste des Commentaires</h4>
         <div className="artboard artboard-demo bg-base-200">
-          <ul className="menu py-4 shadow-lg bg-base-100 rounded-box">
+          <ul className="menu w-auto py-4 shadow-lg bg-base-100 rounded-box">
             {comments &&
               comments.map((comment, index) => (
                 <li
@@ -130,46 +128,47 @@ const CommentsList = () => {
           </ul>
         </div>
 
-        <div className="my-5 border-2 border-red-600">
-          <p className="text-2xl text-red-800">
+        <div className="flex flex-col my-5 border-2 border-red-600">
+          <p className="flex justify-center text-1xl">
             Supprimer toutes les commentaires.
             <br />
             Cette action est irréversible ...
           </p>
           <button
-            className="m-3 btn btn-sm btn-danger"
+            className="m-3 btn btn-sm btn-warning"
             onClick={removeAllComments}
           >
-            Tout supprimer !!!
+            Tout supprimer !
           </button>
         </div>
       </div>
       {currentComment ? (
         <div id="my-modal" className="modal modal-open">
           <div className="modal-box">
-            <div className="flex justify-center items-center">
-              <div>
-                <h4>Commentaire</h4>
-                <div>
-                  <label>
-                    <strong>Texte:</strong>
-                  </label>{" "}
-                  {currentComment.text}
-                </div>
-                <div>
-                  <label>
-                    <strong>Status:</strong>
-                  </label>{" "}
-                  {currentComment.published ? "Published" : "Pending"}
-                </div>
-
+            <div className="flex flex-col">
+              {/* <div> */}
+              <h4 className="text-lg font-semibold mb-5">Commentaire</h4>
+              <div className="flex flex-col mb-5">
+                <label>
+                  <strong>Texte:</strong>
+                </label>{" "}
+                {currentComment.text}
+              </div>
+              <div className="flex flex-col mb-5">
+                <label>
+                  <strong>Status:</strong>
+                </label>{" "}
+                {currentComment.published ? "Published" : "Pending"}
+              </div>
+              <div className="flex">
                 <Link
                   to={"/comments/" + currentComment.id}
-                  className="badge badge-warning"
+                  className="badge badge-warning text-lg"
                 >
-                  Edit
+                  Editer
                 </Link>
               </div>
+              {/* </div> */}
             </div>
             <div className="modal-action">
               <a href="#" className="btn" onClick={desactiveComment}>

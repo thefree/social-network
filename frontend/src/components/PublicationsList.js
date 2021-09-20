@@ -107,7 +107,7 @@ const PublicationsList = () => {
           >
             go
           </button>
-          <button className="btn btn-secondary" onClick={refreshList}>
+          <button className="btn bg-groupopink" onClick={refreshList}>
             reset
           </button>
         </div>
@@ -117,7 +117,9 @@ const PublicationsList = () => {
       <hr />
 
       <div className="">
-        <h4 className="text-lg text-groupoblue">Liste des Publications</h4>
+        <h4 className="text-lg text-groupoblue pb-5 font-semibold">
+          Liste des Publications
+        </h4>
 
         <div className="artboard artboard-demo bg-base-200">
           <ul className="menu py-4 shadow-lg bg-base-100 rounded-box">
@@ -135,15 +137,14 @@ const PublicationsList = () => {
               ))}
           </ul>
         </div>
-
-        <div className="my-5 border-2 border-red-600">
-          <p className="text-2xl text-red-800">
+        <div className="flex flex-col my-5 border-2 border-red-600">
+          <p className="flex justify-center text-1xl">
             Supprimer toutes les publications.
             <br />
             Cette action est irréversible ...
           </p>
           <button
-            className="m-3 btn btn-sm btn-danger"
+            className="m-3 btn btn-sm btn-warning"
             onClick={removeAllPublications}
           >
             Tout supprimer !!!
@@ -153,36 +154,37 @@ const PublicationsList = () => {
       {currentPublication ? (
         <div id="my-modal" className="modal modal-open">
           <div className="modal-box">
-            <div className="col-md-6">
+            <div className="flex flex-col">
               {/* {currentPublication ? ( */}
-              <div>
-                <h4>Publication</h4>
-                <div>
-                  <label>
-                    <strong>Title:</strong>
-                  </label>{" "}
-                  {currentPublication.title}
-                </div>
-                <div>
-                  <label>
-                    <strong>Description:</strong>
-                  </label>{" "}
-                  {currentPublication.description}
-                </div>
-                <div>
-                  <label>
-                    <strong>Status:</strong>
-                  </label>{" "}
-                  {currentPublication.published ? "Published" : "Pending"}
-                </div>
-
+              {/* <div> */}
+              <h4 className="text-lg font-semibold mb-5">Publication</h4>
+              <div className="flex flex-col mb-5">
+                <label>
+                  <strong>Titre:</strong>
+                </label>{" "}
+                {currentPublication.title}
+              </div>
+              <div className="flex flex-col mb-5">
+                <label>
+                  <strong>Description:</strong>
+                </label>{" "}
+                {currentPublication.description}
+              </div>
+              <div className="flex flex-col pb-5">
+                <label>
+                  <strong>Status:</strong>
+                </label>{" "}
+                {currentPublication.published ? "Published" : "Pending"}
+              </div>
+              <div className="flex">
                 <Link
                   to={"/publications/" + currentPublication.id}
-                  className="badge badge-warning"
+                  className="badge badge-warning text-lg"
                 >
-                  Edit
+                  Editer
                 </Link>
               </div>
+              {/* </div> */}
             </div>
             <div className="modal-action">
               <a href="#" className="btn" onClick={desactivePublication}>

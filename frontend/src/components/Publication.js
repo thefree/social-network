@@ -98,12 +98,12 @@ const Publication = (props) => {
   return (
     <div>
       {currentPublication ? (
-        <div className="max-w-md mx-auto my-5 p-10 card bg-base-200">
+        <div className="flex flex-col max-w-md mx-auto my-5 p-5 card bg-base-200">
           <h4 className="text-2xl my-10">Edition: Publication</h4>
-          <form>
+          <form className="space-y-6">
             <div className="form-control">
               <label htmlFor="title" className="label">
-                <span className="label-text">Titre</span>
+                <span className="label-text font-semibold">Titre</span>
               </label>
               <input
                 type="text"
@@ -116,7 +116,7 @@ const Publication = (props) => {
             </div>
             <div className="form-control">
               <label htmlFor="description" className="label">
-                <span className="label-text">Description</span>
+                <span className="label-text font-semibold">Description</span>
               </label>
               <textarea
                 className="textarea h-24 textarea-bordered"
@@ -137,7 +137,7 @@ const Publication = (props) => {
               <input
                 type="file"
                 // className="form-control"
-                className="form-control input input-md input-bordered"
+                className="form-control input input-bordered pt-2"
                 id="myfile"
                 // required
                 // value={currentFile}
@@ -155,17 +155,17 @@ const Publication = (props) => {
               {currentPublication.published ? "Published" : "Pending"}
             </div>
           </form>
-          <div>
+          <div className="space-y-6">
             {currentPublication.published ? (
               <button
-                className="badge badge-primary mr-2"
+                className="badge badge-secondary mr-2"
                 onClick={() => updatePublished(false)}
               >
                 UnPublish
               </button>
             ) : (
               <button
-                className="badge badge-primary mr-2"
+                className="badge badge-secondary mr-2"
                 onClick={() => updatePublished(true)}
               >
                 Publish
@@ -173,7 +173,7 @@ const Publication = (props) => {
             )}
 
             <button
-              className="badge badge-danger mr-2"
+              className="badge badge-warning mr-2"
               onClick={deletePublication}
             >
               Delete
@@ -181,7 +181,7 @@ const Publication = (props) => {
 
             <button
               type="submit"
-              className="badge badge-success"
+              className="badge badge-primary"
               onClick={updatePublication}
             >
               Update
