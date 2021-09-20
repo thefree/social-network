@@ -71,9 +71,6 @@ const PublicationsList = () => {
   };
 
   return (
-    // <div className="list row">
-    // <div className="">
-    // <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
     <div className="flex flex-col items-center">
       <div className="hero bg-base-200">
         <div className="text-center hero-content">
