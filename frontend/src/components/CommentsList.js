@@ -147,7 +147,7 @@ const CommentsList = () => {
       {currentComment ? (
         <div id="my-modal" className="modal modal-open">
           <div className="modal-box">
-            <div className="col-md-6">
+            <div className="flex justify-center items-center">
               <div>
                 <h4>Commentaire</h4>
                 <div>

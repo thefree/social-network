@@ -74,60 +74,68 @@ const Comment = (props) => {
   return (
     <div>
       {currentComment ? (
-        <div className="max-w-md mx-auto my-5 p-10 card bg-base-200">
-          <h4 className="text-2xl my-10">Edition: Commentaire</h4>
+        <div className="edit-form">
+          <h4>Commentaire</h4>
           <form>
-            <div className="form-control">
-              <label htmlFor="text" className="label">
-                <span className="label-text">Commentaire</span>
-              </label>
-              <textarea
+            {/* <div className="form-group">
+              <label htmlFor="title">Title</label>
+              <input
                 type="text"
-                className="input"
+                className="form-control"
+                id="title"
+                name="title"
+                value={currentComment.title}
+                onChange={handleInputChange}
+              />
+            </div> */}
+            <div className="form-group">
+              <label htmlFor="description">Commentaire</label>
+              <input
+                type="text"
+                className="form-control"
                 id="text"
                 name="text"
                 value={currentComment.text}
                 onChange={handleInputChange}
-              ></textarea>
+              />
             </div>
-            <div className="my-5">
+
+            <div className="form-group">
               <label>
-                <strong>Status: </strong>
+                <strong>Status:</strong>
               </label>
               {currentComment.published ? "Published" : "Pending"}
             </div>
           </form>
 
-          <div>
-            {currentComment.published ? (
-              <button
-                className="badge badge-primary mr-2"
-                onClick={() => updatePublished(false)}
-              >
-                UnPublish
-              </button>
-            ) : (
-              <button
-                className="badge badge-primary mr-2"
-                onClick={() => updatePublished(true)}
-              >
-                Publish
-              </button>
-            )}
-
-            <button className="badge badge-danger mr-2" onClick={deleteComment}>
-              Delete
-            </button>
-
+          {currentComment.published ? (
             <button
-              type="submit"
-              className="badge badge-success"
-              onClick={updateComment}
+              className="badge badge-primary mr-2"
+              onClick={() => updatePublished(false)}
             >
-              Update
+              UnPublish
             </button>
-            <p>{message}</p>
-          </div>
+          ) : (
+            <button
+              className="badge badge-primary mr-2"
+              onClick={() => updatePublished(true)}
+            >
+              Publish
+            </button>
+          )}
+
+          <button className="badge badge-danger mr-2" onClick={deleteComment}>
+            Delete
+          </button>
+
+          <button
+            type="submit"
+            className="badge badge-success"
+            onClick={updateComment}
+          >
+            Update
+          </button>
+          <p>{message}</p>
         </div>
       ) : (
         <div>

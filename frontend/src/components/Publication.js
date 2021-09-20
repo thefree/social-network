@@ -98,7 +98,6 @@ const Publication = (props) => {
   return (
     <div>
       {currentPublication ? (
-        // <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md mx-auto my-5 p-10 card bg-base-200">
           <h4 className="text-2xl my-10">Edition: Publication</h4>
           <form>
@@ -126,14 +125,6 @@ const Publication = (props) => {
                 value={currentPublication.description}
                 onChange={handleInputChange}
               ></textarea>
-              {/* <input
-                type="text"
-                className="form-control"
-                id="description"
-                name="description"
-                value={currentPublication.description}
-                onChange={handleInputChange}
-              /> */}
             </div>
             {/* ============= GESTION IMAGE ================== */}
             <img
