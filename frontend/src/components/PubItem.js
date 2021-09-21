@@ -8,11 +8,6 @@ const PubItem = (props) => {
     <div className="bg-white rounded-md shadow-md h-auto mx-8 py-3 px-3 my-5">
       <div className="w-full h-16 flex items-center justify-between">
         <div className="flex">
-          {/* <img
-            className=" rounded-full w-10 h-10 mr-3"
-            src="https://scontent.fsub1-1.fna.fbcdn.net/v/t1.0-9/37921553_1447009505400641_8037753745087397888_n.jpg?_nc_cat=102&_nc_sid=09cbfe&_nc_oc=AQnDTnRBxV3QgnhKOtk9AiziIOXw0K68iIUQfdK_rlUSFgs8fkvnQ6FjP6UBEkA6Zd8&_nc_ht=scontent.fsub1-1.fna&oh=728962e2c233fec37154419ef79c3998&oe=5EFA545A"
-            alt=""
-          /> */}
           <div className="avatar">
             <div className="mb-8 rounded-full w-10 h-10">
               <img
@@ -21,12 +16,12 @@ const PubItem = (props) => {
               />
             </div>
           </div>
-          <div>
+          <div className="ml-4">
             <h3 className="text-md font-semibold">{publishername}</h3>
             <p className="text-xs text-gray-500">45 mnt</p>
           </div>
         </div>
-        {/* <svg
+        <svg
           className="w-16"
           xmlns="http://www.w3.org/2000/svg"
           width="27"
@@ -41,18 +36,23 @@ const PubItem = (props) => {
           <circle cx="12" cy="12" r="1"></circle>
           <circle cx="19" cy="12" r="1"></circle>
           <circle cx="5" cy="12" r="1"></circle>
-        </svg> */}
+        </svg>
       </div>
-      {/* <Link to={"/post/" + id} className="badge badge-warning"> */}
-      <Link to={"/post/" + id} className="badge">
-        <h3 className="text-md font-semibold ">{title}</h3>
-      </Link>
-      <Link to={"/post/" + id} className="">
-        <p>{description}</p>
-      </Link>
-      <img src={image} className="max-w-md" alt="" />
+      <div className="flex flex-col space-y-4">
+        {/* <Link to={"/post/" + id} className="badge py-4"> */}
+        <Link to={"/post/" + id} className="badge h-auto p-4">
+          <h3 className="text-md font-semibold">{title}</h3>
+        </Link>
+        <Link to={"/post/" + id} className="py-2">
+          <p>{description}</p>
+        </Link>
+        <div className="flex justify-around pb-4">
+          <img src={image} className="" alt="" />
+        </div>
+      </div>
       <hr />
-      <div className="grid grid-cols-3 w-full px-5 my-3">
+      {/* <div className="grid grid-cols-3 w-full px-5 my-3"> */}
+      <div className="flex pt-3">
         <button className="flex flex-row justify-center items-center w-full space-x-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -67,31 +67,41 @@ const PubItem = (props) => {
           >
             <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
           </svg>
-          <span className="font-semibold text-lg text-gray-600">sukai</span>
-        </button>
-        <button className="flex flex-row justify-center items-center w-full space-x-3">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="27"
-            height="27"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#838383"
-            strokeWidth="2"
-            strokeLinecap="square"
-            strokeLinejoin="round"
-          >
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
-          <span className="font-semibold text-lg text-gray-600">
-            <Link to={"/post/" + id} className="">
-              commentaires
-            </Link>
-            {/* commentaires */}
+          <span className="font-semibold text-lg text-gray-600 hidden md:block">
+            aimer
           </span>
         </button>
+        <Link to={"/post/" + id} className="">
+          {/* <button className="flex flex-row justify-center items-center w-full space-x-3"> */}
+          <button className="flex flex-row justify-center items-center space-x-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="27"
+              height="27"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#838383"
+              strokeWidth="2"
+              strokeLinecap="square"
+              strokeLinejoin="round"
+            >
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            {/* <span className="font-semibold text-lg text-gray-600">
+              <Link to={"/post/" + id} className="">
+                répondre
+              </Link>
+            </span> */}
+          </button>
+        </Link>
+        <span className="ml-4 font-semibold text-lg text-gray-600 hidden md:block">
+          <Link to={"/post/" + id} className="">
+            répondre
+          </Link>
+          {/* commentaires */}
+        </span>
 
-        {/* <button className="flex flex-row justify-center items-center w-full space-x-3">
+        <button className="flex flex-row justify-center items-center w-full space-x-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="27"
@@ -109,8 +119,10 @@ const PubItem = (props) => {
             <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
             <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
           </svg>
-          <span className="font-semibold text-lg text-gray-600">bagikan</span>
-        </button> */}
+          <span className="font-semibold text-lg text-gray-600 hidden md:block">
+            partager
+          </span>
+        </button>
       </div>
       {/* <hr /> */}
     </div>

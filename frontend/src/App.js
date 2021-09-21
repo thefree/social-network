@@ -56,7 +56,7 @@ const App = () => {
   // console.log("INFOS USER", currentUser);
 
   return (
-    <div className="flex flex-col min-h-screen overflow-hidden">
+    <div className="flex flex-col min-h-screen overflow-hidden space-y-4 mx-auto">
       <Menu
         showModeratorBoard={showModeratorBoard}
         showAdminBoard={showAdminBoard}
