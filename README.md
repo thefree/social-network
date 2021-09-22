@@ -24,19 +24,19 @@ Le but de cet outil est de faciliter les interactions entre collègues.
 - SQLite
 - JWT( JSON Web Token: Authentication)
 ---
-##### Pour Tester l'application
+## Pour Tester l'application
 
 - Cloner le dépot
-## Initialiser le serveur
+### Initialiser le serveur
 - cd backend
 - npm install
 - nodemon server
-## Initialiser le frontend
+### Initialiser le frontend
 - cd frontend
 - npm install
 - npm run front
 
-## Navigation
+### Navigation
 http://localhost:8081
 
 
