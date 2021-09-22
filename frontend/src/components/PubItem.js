@@ -64,6 +64,7 @@ const PubItem = (props) => {
             strokeWidth="2"
             strokeLinecap="square"
             strokeLinejoin="round"
+            className="hover:fill-current text-green-200"
           >
             <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
           </svg>
@@ -84,6 +85,7 @@ const PubItem = (props) => {
               strokeWidth="2"
               strokeLinecap="square"
               strokeLinejoin="round"
+              className="hover:fill-current text-blue-400"
             >
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
             </svg>

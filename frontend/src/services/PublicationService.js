@@ -48,7 +48,7 @@ const update = async (id, data) => {
 // };
 
 const remove = (id) => {
-  return axios.delete(API_URL + `/${id}`);
+  return axios.delete(API_URL + `/${id}`, { headers: authHeader() });
 };
 
 // const removeAll = () => {

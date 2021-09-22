@@ -64,7 +64,10 @@ const Comment = (props) => {
     CommentDataService.remove(currentComment.id)
       .then((response) => {
         console.log(response.data);
-        props.history.push("/publications");
+        setMessage("The comment was deleted successfully!");
+        setTimeout(() => {
+          props.history.push("/comments");
+        }, 3000);
       })
       .catch((e) => {
         console.log(e);
@@ -132,7 +135,7 @@ const Comment = (props) => {
             >
               Update
             </button>
-            <p>{message}</p>
+            <p className="text-green-400">{message}</p>
           </div>
         </div>
       ) : (

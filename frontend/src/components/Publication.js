@@ -88,7 +88,10 @@ const Publication = (props) => {
     PublicationDataService.remove(currentPublication.id)
       .then((response) => {
         console.log(response.data);
-        props.history.push("/publications");
+        setMessage("The publication was deleted successfully!");
+        setTimeout(() => {
+          props.history.push("/publications");
+        }, 3000);
       })
       .catch((e) => {
         console.log(e);
@@ -186,7 +189,7 @@ const Publication = (props) => {
             >
               Update
             </button>
-            <p>{message}</p>
+            <p className="text-green-400">{message}</p>
           </div>
         </div>
       ) : (
