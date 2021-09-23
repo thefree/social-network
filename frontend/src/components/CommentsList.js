@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
-import CommentDataService from "../services/CommentService";
 import { Link } from "react-router-dom";
+import CommentDataService from "../services/CommentService";
+
+import PubItemPostAdmin from "./PubItemPostAdmin";
+import PubItemPostCommentAdmin from "./PubItemPostCommentAdmin";
 
 const CommentsList = () => {
   const [comments, setComments] = useState([]);
@@ -83,7 +86,9 @@ const CommentsList = () => {
           </div>
         </div>
       </div>
-      <div className="form-control">
+      {/* Search Form */}
+
+      {/* <div className="form-control">
         <label className="label">
           <span className="label-text">Filtrer les commentaires</span>
         </label>
@@ -107,11 +112,13 @@ const CommentsList = () => {
           </button>
         </div>
         <hr className="my-5" />
-      </div>
+      </div> */}
+
+      {/* Fin search Form */}
       <hr />
       <div className="">
         <h4 className="text-lg mb-5">Liste des Commentaires</h4>
-        <div className="artboard artboard-demo bg-base-200">
+        {/* <div className="artboard artboard-demo bg-base-200">
           <ul className="menu w-auto py-4 shadow-lg bg-base-100 rounded-box">
             {comments &&
               comments.map((comment, index) => (
@@ -126,9 +133,9 @@ const CommentsList = () => {
                 </li>
               ))}
           </ul>
-        </div>
+        </div> */}
 
-        <div className="flex flex-col my-5 border-2 border-red-600">
+        {/* <div className="flex flex-col my-5 border-2 border-red-600">
           <p className="flex justify-center text-1xl">
             Supprimer toutes les commentaires.
             <br />
@@ -140,8 +147,48 @@ const CommentsList = () => {
           >
             Tout supprimer !
           </button>
-        </div>
+        </div> */}
       </div>
+      {/* ============================= */}
+      <div>
+        {comments &&
+          comments.map((comment, index) => (
+            <>
+              <header className="bg-white shadow">
+                <div className="mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                  <h1 className="text-2xl font-bold text-gray-900">
+                    {comment.publication.title}
+                  </h1>
+                </div>
+              </header>
+              <main>
+                <PubItemPostAdmin
+                  id={comment.publication.id}
+                  title={comment.publication.title}
+                  description={comment.publication.description}
+                  // publishername={publishername.username}
+                  publishername={comment.publication.name}
+                  image={comment.publication.imageUrl}
+                />
+              </main>
+              <aside className="">
+                <h2 className="mx-10 text-xl font-bold text-gray-900">
+                  Commentaire
+                </h2>
+                {/* {comments?.map((comment, index) => ( */}
+                <PubItemPostCommentAdmin
+                  key={index}
+                  id={comment.id}
+                  text={comment.text}
+                  commenter_name={comment.name}
+                  onClick={() => setActiveComment(comment, index)}
+                />
+                {/* ))} */}
+              </aside>
+            </>
+          ))}
+      </div>
+      {/* ============================= */}
       {currentComment ? (
         <div id="my-modal" className="modal modal-open">
           <div className="modal-box">

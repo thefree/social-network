@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PublicationDataService from "../services/PublicationService";
 import { Link } from "react-router-dom";
-// import UserService from "../services/user.service";
-// import EventBus from "../common/EventBus";
+import UserService from "../services/user.service";
+import EventBus from "../common/EventBus";
 
 const PublicationsList = () => {
   const [publications, setPublications] = useState([]);
@@ -13,6 +13,40 @@ const PublicationsList = () => {
   useEffect(() => {
     retrievePublications();
   }, []);
+
+  // useEffect(() => {
+  //   UserService.getUserBoard()
+  //     .then(
+  //       (response) => {
+  //         // console.log("REPONSE", response);
+  //         if (response.data == "OK") {
+  //           retrievePublications();
+  //         }
+  //       }
+  //       // (error) => {
+  //       //   if (
+  //       //     (error.response && error.response.status === 401) ||
+  //       //     (error.response && error.response.status === 403)
+  //       //   ) {
+  //       //     EventBus.dispatch("logout");
+  //       //   }
+  //       // }
+  //     )
+  //     .catch((error) => {
+  //       console.error(error);
+  //       if (error) {
+  //         EventBus.dispatch("logout");
+  //       }
+  //       // if (
+  //       //   (error.response && error.response.status === 401) ||
+  //       //   (error.response && error.response.status === 403)
+  //       // ) {
+  //       //   EventBus.dispatch("logout");
+  //       // }
+  //     });
+  // }, []);
+
+  // const history = useHistory();
 
   const onChangeSearchTitle = (e) => {
     const searchTitle = e.target.value;

@@ -1,29 +1,27 @@
 import React, { useState, useEffect } from "react";
-import PublicationDataService from "../services/PublicationService";
+import CommentDataService from "../services/CommentService";
 import { Link } from "react-router-dom";
-// import UserService from "../services/user.service";
-// import EventBus from "../common/EventBus";
 
-const PublicationsList = () => {
-  const [publications, setPublications] = useState([]);
-  const [currentPublication, setCurrentPublication] = useState(null);
+const CommentsList = () => {
+  const [comments, setComments] = useState([]);
+  const [currentComment, setCurrentComment] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
-  const [searchTitle, setSearchTitle] = useState("");
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
-    retrievePublications();
+    retrieveComments();
   }, []);
 
-  const onChangeSearchTitle = (e) => {
-    const searchTitle = e.target.value;
-    setSearchTitle(searchTitle);
+  const onChangeSearchText = (e) => {
+    const searchText = e.target.value;
+    setSearchText(searchText);
   };
 
-  const retrievePublications = () => {
-    // PublicationDataService.getAll()
-    PublicationDataService.getAllByUser()
+  const retrieveComments = () => {
+    // CommentDataService.getAll()
+    CommentDataService.getAllByUser()
       .then((response) => {
-        setPublications(response.data);
+        setComments(response.data);
         console.log(response.data);
       })
       .catch((e) => {
@@ -32,24 +30,22 @@ const PublicationsList = () => {
   };
 
   const refreshList = () => {
-    retrievePublications();
-    setCurrentPublication(null);
+    retrieveComments();
+    setCurrentComment(null);
     setCurrentIndex(-1);
   };
 
-  const setActivePublication = (publication, index) => {
-    setCurrentPublication(publication);
+  const setActiveComment = (comment, index) => {
+    setCurrentComment(comment);
     setCurrentIndex(index);
-    // history.push("#my-modal");
-    // history.replace("#my-modal");
   };
 
-  const desactivePublication = () => {
-    setCurrentPublication(false);
+  const desactiveComment = () => {
+    setCurrentComment(false);
   };
 
-  const removeAllPublications = () => {
-    PublicationDataService.removeAll()
+  const removeAllComments = () => {
+    CommentDataService.removeAll()
       .then((response) => {
         console.log(response.data);
         refreshList();
@@ -59,10 +55,10 @@ const PublicationsList = () => {
       });
   };
 
-  const findByTitle = () => {
-    PublicationDataService.findByTitle(searchTitle)
+  const findByText = () => {
+    CommentDataService.findByText(searchText)
       .then((response) => {
-        setPublications(response.data);
+        setComments(response.data);
         console.log(response.data);
       })
       .catch((e) => {
@@ -76,36 +72,35 @@ const PublicationsList = () => {
         <div className="text-center hero-content">
           <div className="max-w-md">
             <h1 className="mb-5 text-5xl font-bold">
-              Gestion des publications
+              Gestion des commentaires
             </h1>
             <p className="mb-5 text-justify">
-              Effectuez une recheche sur le titre ou en selectionnant une
-              publication dans la liste. <br />
+              Effectuez une recheche sur le contenu ou en selectionnant un
+              commentaire dans la liste. <br />
               Attention: L'action sur le bouton " TOUT SUPPRIMER" est définitive
               !!!.
             </p>
           </div>
         </div>
       </div>
-
       <div className="form-control">
         <label className="label">
-          <span className="label-text">Filtrer les Publication</span>
+          <span className="label-text">Filtrer les commentaires</span>
         </label>
         <div className="flex space-x-2">
           <input
             type="text"
-            placeholder="Chercher par titre"
-            className="input input-primary input-bordered"
-            value={searchTitle}
-            onChange={onChangeSearchTitle}
+            className="form-control"
+            placeholder="Search by text"
+            value={searchText}
+            onChange={onChangeSearchText}
           />
           <button
             className="btn btn-primary"
             type="button"
-            onClick={findByTitle}
+            onClick={findByText}
           >
-            go
+            Search
           </button>
           <button className="btn bg-groupopink" onClick={refreshList}>
             reset
@@ -113,72 +108,61 @@ const PublicationsList = () => {
         </div>
         <hr className="my-5" />
       </div>
-
       <hr />
-
       <div className="">
-        <h4 className="text-lg text-groupoblue pb-5 font-semibold">
-          Liste des Publications
-        </h4>
-
+        <h4 className="text-lg mb-5">Liste des Commentaires</h4>
         <div className="artboard artboard-demo bg-base-200">
-          <ul className="menu py-4 shadow-lg bg-base-100 rounded-box">
-            {publications &&
-              publications.map((publication, index) => (
+          <ul className="menu w-auto py-4 shadow-lg bg-base-100 rounded-box">
+            {comments &&
+              comments.map((comment, index) => (
                 <li
                   className={
                     "hover-bordered " + (index === currentIndex ? "active" : "")
                   }
-                  onClick={() => setActivePublication(publication, index)}
+                  onClick={() => setActiveComment(comment, index)}
                   key={index}
                 >
-                  <a>{publication.title}</a>
+                  <a>{comment.text}</a>
                 </li>
               ))}
           </ul>
         </div>
+
         <div className="flex flex-col my-5 border-2 border-red-600">
           <p className="flex justify-center text-1xl">
-            Supprimer toutes les publications.
+            Supprimer toutes les commentaires.
             <br />
             Cette action est irréversible ...
           </p>
           <button
             className="m-3 btn btn-sm btn-warning"
-            onClick={removeAllPublications}
+            onClick={removeAllComments}
           >
-            Tout supprimer !!!
+            Tout supprimer !
           </button>
         </div>
       </div>
-      {currentPublication ? (
+      {currentComment ? (
         <div id="my-modal" className="modal modal-open">
           <div className="modal-box">
             <div className="flex flex-col">
-              {/* {currentPublication ? ( */}
               {/* <div> */}
-              <h4 className="text-lg font-semibold mb-5">Publication</h4>
+              <h4 className="text-lg font-semibold mb-5">Commentaire</h4>
               <div className="flex flex-col mb-5">
                 <label>
-                  <strong>Titre:</strong>
+                  <strong>Texte:</strong>
                 </label>{" "}
-                {currentPublication.title}
+                {currentComment.text}
               </div>
               <div className="flex flex-col mb-5">
-                <label>
-                  <strong>Description:</strong>
-                </label>{" "}
-                {currentPublication.description}
-              </div>
-              <div className="flex flex-col pb-5">
                 <label>
                   <strong>Status:</strong>
                 </label>{" "}
-                {currentPublication.published ? "Published" : "Pending"}
+                {currentComment.published ? "Published" : "Pending"}
               </div>
               <div className="flex">
                 <Link
-                  to={"/publications/" + currentPublication.id}
+                  to={"/comments/" + currentComment.id}
                   className="badge badge-warning text-lg"
                 >
                   Editer
@@ -187,7 +171,7 @@ const PublicationsList = () => {
               {/* </div> */}
             </div>
             <div className="modal-action">
-              <a href="#" className="btn" onClick={desactivePublication}>
+              <a href="#" className="btn" onClick={desactiveComment}>
                 Fermer
               </a>
             </div>
@@ -196,11 +180,11 @@ const PublicationsList = () => {
       ) : (
         <div>
           {/* <br />
-          <p>Please click on a Publication...</p> */}
+            <p>Please click on a Comment...</p> */}
         </div>
       )}
     </div>
   );
 };
 
-export default PublicationsList;
+export default CommentsList;

@@ -38,12 +38,14 @@ const AddPublication = () => {
         title: publication.title,
         description: publication.description,
         userId: currentUser.id,
+        name: currentUser.username,
       };
     } else {
       data = new FormData();
       data.append("title", publication.title);
       data.append("description", publication.description);
       data.append("userId", currentUser.id);
+      data.append("name", currentUser.username);
       data.append("currentFile", currentFile);
     }
 
