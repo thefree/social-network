@@ -24,6 +24,7 @@ exports.create = (req, res) => {
           req.file.filename
         }`,
         userId: req.body.userId,
+        name: req.body.name,
       }
     : { ...req.body };
 

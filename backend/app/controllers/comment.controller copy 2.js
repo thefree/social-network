@@ -3,7 +3,6 @@ const db = require("../models");
 
 const Comment = db.comments;
 const User = db.user;
-const Publication = db.publications;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Comment
@@ -64,11 +63,7 @@ exports.findAllByUser = async (req, res) => {
 
   if (isModOrAdm) {
     Comment.findAll({
-      // include: { model: User, as: "user" },
-      include: [
-        { model: User, as: "user" },
-        { model: Publication, as: "publication" },
-      ],
+      include: { model: User, as: "user" },
       where: condition,
     })
       .then((data) => {
@@ -81,13 +76,7 @@ exports.findAllByUser = async (req, res) => {
 
   if (!isModOrAdm) {
     Comment.findAll({
-      include: [
-        { model: User, as: "user" },
-        { model: Publication, as: "publication" },
-      ],
-
-      // include: { all: true },
-
+      include: { model: User, as: "user" },
       where: {
         [Op.and]: [condition, { userId: userid }],
       },
