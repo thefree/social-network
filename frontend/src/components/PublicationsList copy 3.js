@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PublicationDataService from "../services/PublicationService";
-import { useHistory, Link } from "react-router-dom";
-
-import PubItemPostAdmin from "./PubItemPostAdmin";
-
-import UserService from "../services/user.service";
-import EventBus from "../common/EventBus";
+import { Link } from "react-router-dom";
+// import UserService from "../services/user.service";
+// import EventBus from "../common/EventBus";
 
 const PublicationsList = () => {
   const [publications, setPublications] = useState([]);
@@ -13,23 +10,7 @@ const PublicationsList = () => {
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchTitle, setSearchTitle] = useState("");
 
-  let history = useHistory();
-
   useEffect(() => {
-    UserService.getUserBoard().then(
-      (response) => {
-        // setContent(response.data);
-      },
-      (error) => {
-        if (
-          error.response &&
-          (error.response.status === 401 || error.response.status === 403)
-        ) {
-          EventBus.dispatch("logout");
-          history.push("/login");
-        }
-      }
-    );
     retrievePublications();
   }, []);
 
@@ -107,7 +88,7 @@ const PublicationsList = () => {
         </div>
       </div>
 
-      {/* <div className="form-control">
+      <div className="form-control">
         <label className="label">
           <span className="label-text">Filtrer les Publication</span>
         </label>
@@ -133,14 +114,14 @@ const PublicationsList = () => {
         <hr className="my-5" />
       </div>
 
-      <hr /> */}
+      <hr />
 
       <div className="">
-        {/* <h4 className="text-lg text-groupoblue pb-5 font-semibold">
+        <h4 className="text-lg text-groupoblue pb-5 font-semibold">
           Liste des Publications
-        </h4> */}
+        </h4>
 
-        {/* <div className="artboard artboard-demo bg-base-200">
+        <div className="artboard artboard-demo bg-base-200">
           <ul className="menu py-4 shadow-lg bg-base-100 rounded-box">
             {publications &&
               publications.map((publication, index) => (
@@ -155,9 +136,8 @@ const PublicationsList = () => {
                 </li>
               ))}
           </ul>
-        </div> */}
-
-        {/* <div className="flex flex-col my-5 border-2 border-red-600">
+        </div>
+        <div className="flex flex-col my-5 border-2 border-red-600">
           <p className="flex justify-center text-1xl">
             Supprimer toutes les publications.
             <br />
@@ -169,48 +149,8 @@ const PublicationsList = () => {
           >
             Tout supprimer !!!
           </button>
-        </div> */}
+        </div>
       </div>
-      {/* ============================= */}
-      <div>
-        {publications &&
-          publications.map((publication, index) => (
-            <>
-              <header className="bg-white shadow">
-                <div className="mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                  {/* <h1 className="text-2xl font-bold text-gray-900">
-                    {publication.title}
-                  </h1> */}
-                </div>
-              </header>
-              <main>
-                <PubItemPostAdmin
-                  key={index}
-                  id={publication.id}
-                  title={publication.title}
-                  description={publication.description}
-                  // publishername={publishername.username}
-                  publishername={publication.name}
-                  image={publication.imageUrl}
-                  onClick={() => setActivePublication(publication, index)}
-                />
-              </main>
-              {/* <aside className="">
-                <h2 className="mx-10 text-xl font-bold text-gray-900">
-                  Commentaire
-                </h2>
-                <PubItemPostCommentAdmin
-                  key={index}
-                  id={comment.id}
-                  text={comment.text}
-                  commenter_name={comment.name}
-                  onClick={() => setActiveComment(comment, index)}
-                />
-              </aside> */}
-            </>
-          ))}
-      </div>
-      {/* ============================= */}
       {currentPublication ? (
         <div id="my-modal" className="modal modal-open">
           <div className="modal-box">

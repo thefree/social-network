@@ -57,6 +57,9 @@ const PublicationPost = (props) => {
           published: response.data.published,
         });
         setSubmitted(true);
+        setTimeout(() => {
+          getPublication(props.match.params.id);
+        }, 2000);
         console.log(response.data);
       })
       .catch((e) => {

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import PublicationDataService from "../services/PublicationService";
 import AuthService from "../services/auth.service";
+import { useHistory } from "react-router-dom";
+
+import UserService from "../services/user.service";
+import EventBus from "../common/EventBus";
 
 const AddPublication = () => {
   const initialPublicationState = {
@@ -15,7 +19,23 @@ const AddPublication = () => {
   const [currentUser, setCurrentUser] = useState();
   const [currentFile, setCurrentFile] = useState();
 
+  let history = useHistory();
+
   useEffect(() => {
+    UserService.getUserBoard().then(
+      (response) => {
+        // setContent(response.data);
+      },
+      (error) => {
+        if (
+          error.response &&
+          (error.response.status === 401 || error.response.status === 403)
+        ) {
+          EventBus.dispatch("logout");
+          history.push("/login");
+        }
+      }
+    );
     const user = AuthService.getCurrentUser();
     if (user) {
       setCurrentUser(user);

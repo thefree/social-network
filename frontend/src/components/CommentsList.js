@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import CommentDataService from "../services/CommentService";
 
 import PubItemPostAdmin from "./PubItemPostAdmin";
 import PubItemPostCommentAdmin from "./PubItemPostCommentAdmin";
+
+import UserService from "../services/user.service";
+import EventBus from "../common/EventBus";
 
 const CommentsList = () => {
   const [comments, setComments] = useState([]);
@@ -11,7 +14,23 @@ const CommentsList = () => {
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchText, setSearchText] = useState("");
 
+  let history = useHistory();
+
   useEffect(() => {
+    UserService.getUserBoard().then(
+      (response) => {
+        // setContent(response.data);
+      },
+      (error) => {
+        if (
+          error.response &&
+          (error.response.status === 401 || error.response.status === 403)
+        ) {
+          EventBus.dispatch("logout");
+          history.push("/login");
+        }
+      }
+    );
     retrieveComments();
   }, []);
 

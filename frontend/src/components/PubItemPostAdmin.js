@@ -1,7 +1,7 @@
 import React from "react";
 
 const PubItemPostAdmin = (props) => {
-  const { title, description, publishername, image } = props;
+  const { title, description, publishername, image, onClick } = props;
   return (
     <div className="bg-white rounded-md shadow-md h-auto mx-8 py-3 px-3 my-5">
       {/* <div className="bg-white w-full rounded-md shadow-md h-auto py-3 px-3 my-5"> */}
@@ -21,7 +21,7 @@ const PubItemPostAdmin = (props) => {
           </div>
         </div>
         <svg
-          className="w-16"
+          className="w-16 hover:bg-pink-400 text-pink-600"
           xmlns="http://www.w3.org/2000/svg"
           width="27"
           height="27"
@@ -31,6 +31,7 @@ const PubItemPostAdmin = (props) => {
           strokeWidth="2"
           strokeLinecap="square"
           strokeLinejoin="round"
+          onClick={onClick}
         >
           <circle cx="12" cy="12" r="1"></circle>
           <circle cx="19" cy="12" r="1"></circle>
