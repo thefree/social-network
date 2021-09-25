@@ -38,6 +38,7 @@ const Home = () => {
             description={publication.description}
             image={publication.imageUrl}
             publishername={publication.user?.username}
+            dateFrom={publication.createdAt}
           />
         ))}
       </main>

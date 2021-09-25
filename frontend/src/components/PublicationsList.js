@@ -193,6 +193,7 @@ const PublicationsList = () => {
                   publishername={publication.name}
                   image={publication.imageUrl}
                   onClick={() => setActivePublication(publication, index)}
+                  dateFrom={publication.createdAt}
                 />
               </main>
               {/* <aside className="">

@@ -188,6 +188,8 @@ const CommentsList = () => {
                   // publishername={publishername.username}
                   publishername={comment.publication.name}
                   image={comment.publication.imageUrl}
+                  // dateFrom={comment.publication.createdAt}
+                  dateFrom={comment.publication.createdAt.substring(0, 25)}
                 />
               </main>
               <aside className="">
@@ -200,6 +202,8 @@ const CommentsList = () => {
                   id={comment.id}
                   text={comment.text}
                   commenter_name={comment.name}
+                  // dateFrom={comment.createdAt}
+                  dateFrom={comment.createdAt.substring(0, 25)}
                   onClick={() => setActiveComment(comment, index)}
                 />
                 {/* ))} */}

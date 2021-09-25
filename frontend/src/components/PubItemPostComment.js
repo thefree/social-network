@@ -1,7 +1,7 @@
 import React from "react";
 
 const PubItemPostComment = (props) => {
-  const { text, commenter_name } = props;
+  const { text, commenter_name, dateFrom } = props;
   return (
     <div className="bg-gray-100 rounded-md shadow-md h-auto py-3 px-3 mx-10 my-5">
       {/* <div className="bg-gray-100 w-full rounded-md shadow-md h-auto py-3 px-3 mx-10 my-5"> */}
@@ -23,7 +23,7 @@ const PubItemPostComment = (props) => {
           </div>
           <div>
             <h3 className="text-md font-semibold">{commenter_name}</h3>
-            <p className="text-xs text-gray-500">45 mnt</p>
+            <p className="text-xs text-gray-500">{dateFrom}</p>
           </div>
         </div>
         <svg

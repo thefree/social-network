@@ -92,6 +92,7 @@ const PublicationPost = (props) => {
           // publishername={publishername.username}
           publishername={currentPublication.user?.username}
           image={currentPublication.imageUrl}
+          dateFrom={currentPublication.createdAt}
         />
       </main>
       <aside className="">
@@ -102,6 +103,7 @@ const PublicationPost = (props) => {
             id={comment.id}
             text={comment.text}
             commenter_name={comment.name}
+            dateFrom={comment.createdAt}
           />
         ))}
       </aside>

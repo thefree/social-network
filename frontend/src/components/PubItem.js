@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const PubItem = (props) => {
-  const { id, title, description, publishername, image } = props;
+  const { id, title, description, publishername, image, dateFrom } = props;
   return (
     // <div className="bg-white w-full rounded-md shadow-md h-auto mx-8 py-3 px-3 my-5">
     <div className="bg-white rounded-md shadow-md h-auto mx-8 py-3 px-3 my-5">
@@ -18,7 +18,7 @@ const PubItem = (props) => {
           </div>
           <div className="ml-4">
             <h3 className="text-md font-semibold">{publishername}</h3>
-            <p className="text-xs text-gray-500">45 mnt</p>
+            <p className="text-xs text-gray-500">{dateFrom}</p>
           </div>
         </div>
         <svg

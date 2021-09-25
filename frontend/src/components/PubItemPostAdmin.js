@@ -1,7 +1,7 @@
 import React from "react";
 
 const PubItemPostAdmin = (props) => {
-  const { title, description, publishername, image, onClick } = props;
+  const { title, description, publishername, image, dateFrom, onClick } = props;
   return (
     <div className="bg-white rounded-md shadow-md h-auto mx-8 py-3 px-3 my-5">
       {/* <div className="bg-white w-full rounded-md shadow-md h-auto py-3 px-3 my-5"> */}
@@ -17,7 +17,7 @@ const PubItemPostAdmin = (props) => {
           </div>
           <div className="ml-4">
             <h3 className="text-md font-semibold">{publishername}</h3>
-            <p className="text-xs text-gray-500">45 mnt</p>
+            <p className="text-xs text-gray-500">{dateFrom}</p>
           </div>
         </div>
         <svg
