@@ -50,6 +50,7 @@ exports.findAll = (req, res) => {
   Publication.findAll({
     include: { model: User, as: "user" },
     where: condition,
+    order: [["createdAt", "DESC"]],
   })
     .then((data) => {
       res.send(data);
@@ -74,6 +75,7 @@ exports.findAllByUser = async (req, res) => {
     Publication.findAll({
       include: { model: User, as: "user" },
       where: condition,
+      order: [["createdAt", "DESC"]],
     })
       .then((data) => {
         res.send(data);
@@ -89,6 +91,7 @@ exports.findAllByUser = async (req, res) => {
       where: {
         [Op.and]: [condition, { userId: userid }],
       },
+      order: [["createdAt", "DESC"]],
     })
       .then((data) => {
         res.send(data);

@@ -42,7 +42,10 @@ exports.findAll = (req, res) => {
   const text = req.query.text;
   var condition = text ? { text: { [Op.like]: `%${text}%` } } : null;
 
-  Comment.findAll({ where: condition })
+  Comment.findAll({
+    where: condition,
+    order: [["createdAt", "DESC"]],
+  })
     .then((data) => {
       res.send(data);
     })
@@ -70,6 +73,7 @@ exports.findAllByUser = async (req, res) => {
         { model: Publication, as: "publication" },
       ],
       where: condition,
+      order: [["createdAt", "DESC"]],
     })
       .then((data) => {
         res.send(data);
@@ -91,6 +95,7 @@ exports.findAllByUser = async (req, res) => {
       where: {
         [Op.and]: [condition, { userId: userid }],
       },
+      order: [["createdAt", "DESC"]],
     })
       .then((data) => {
         res.send(data);
