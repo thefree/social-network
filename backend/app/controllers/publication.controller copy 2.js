@@ -44,13 +44,12 @@ exports.create = (req, res) => {
 
 // Retrieve all Publications from the database.
 exports.findAll = (req, res) => {
-  // const title = req.query.title;
-  // var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+  const title = req.query.title;
+  var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
   Publication.findAll({
     include: { model: User, as: "user" },
-    // where: condition,
-    where: { published: true },
+    where: condition,
     order: [["createdAt", "DESC"]],
   })
     .then((data) => {
