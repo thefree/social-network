@@ -107,70 +107,7 @@ const PublicationsList = () => {
         </div>
       </div>
 
-      {/* <div className="form-control">
-        <label className="label">
-          <span className="label-text">Filtrer les Publication</span>
-        </label>
-        <div className="flex space-x-2">
-          <input
-            type="text"
-            placeholder="Chercher par titre"
-            className="input input-primary input-bordered"
-            value={searchTitle}
-            onChange={onChangeSearchTitle}
-          />
-          <button
-            className="btn btn-primary"
-            type="button"
-            onClick={findByTitle}
-          >
-            go
-          </button>
-          <button className="btn bg-groupopink" onClick={refreshList}>
-            reset
-          </button>
-        </div>
-        <hr className="my-5" />
-      </div>
-
-      <hr /> */}
-
-      <div className="">
-        {/* <h4 className="text-lg text-groupoblue pb-5 font-semibold">
-          Liste des Publications
-        </h4> */}
-
-        {/* <div className="artboard artboard-demo bg-base-200">
-          <ul className="menu py-4 shadow-lg bg-base-100 rounded-box">
-            {publications &&
-              publications.map((publication, index) => (
-                <li
-                  className={
-                    "hover-bordered " + (index === currentIndex ? "active" : "")
-                  }
-                  onClick={() => setActivePublication(publication, index)}
-                  key={index}
-                >
-                  <a>{publication.title}</a>
-                </li>
-              ))}
-          </ul>
-        </div> */}
-
-        {/* <div className="flex flex-col my-5 border-2 border-red-600">
-          <p className="flex justify-center text-1xl">
-            Supprimer toutes les publications.
-            <br />
-            Cette action est irréversible ...
-          </p>
-          <button
-            className="m-3 btn btn-sm btn-warning"
-            onClick={removeAllPublications}
-          >
-            Tout supprimer !!!
-          </button>
-        </div> */}
-      </div>
+      <div className=""></div>
       {/* ============================= */}
       <div>
         {publications &&
@@ -185,7 +122,7 @@ const PublicationsList = () => {
               </header>
               <main>
                 <PubItemPostAdmin
-                  key={index}
+                  key={publication.id}
                   id={publication.id}
                   title={publication.title}
                   description={publication.description}
@@ -196,18 +133,6 @@ const PublicationsList = () => {
                   dateFrom={publication.createdAt}
                 />
               </main>
-              {/* <aside className="">
-                <h2 className="mx-10 text-xl font-bold text-gray-900">
-                  Commentaire
-                </h2>
-                <PubItemPostCommentAdmin
-                  key={index}
-                  id={comment.id}
-                  text={comment.text}
-                  commenter_name={comment.name}
-                  onClick={() => setActiveComment(comment, index)}
-                />
-              </aside> */}
             </>
           ))}
       </div>

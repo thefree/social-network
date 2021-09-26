@@ -1,7 +1,7 @@
 import React from "react";
 
 const PubItemPostAdmin = (props) => {
-  const { title, description, publishername, image, dateFrom, onClick } = props;
+  const { title, description, publishername, image, dateFrom } = props;
   return (
     <div className="bg-white rounded-md shadow-md h-auto mx-8 py-3 px-3 my-5">
       {/* <div className="bg-white w-full rounded-md shadow-md h-auto py-3 px-3 my-5"> */}
@@ -20,7 +20,7 @@ const PubItemPostAdmin = (props) => {
             <p className="text-xs text-gray-500">{dateFrom}</p>
           </div>
         </div>
-        <svg
+        {/* <svg
           className="w-16 hover:bg-pink-400 text-pink-600"
           xmlns="http://www.w3.org/2000/svg"
           width="27"
@@ -36,14 +36,12 @@ const PubItemPostAdmin = (props) => {
           <circle cx="12" cy="12" r="1"></circle>
           <circle cx="19" cy="12" r="1"></circle>
           <circle cx="5" cy="12" r="1"></circle>
-        </svg>
+        </svg> */}
       </div>
       <div className="flex flex-col space-y-4">
         <h3 className="text-md font-semibold ">{title}</h3>
         <p>{description}</p>
-        <div className="flex justify-around pb-4">
-          <img src={image} className="" alt="" />
-        </div>
+        <img src={image} className="max-w-md" alt="" />
       </div>
     </div>
   );

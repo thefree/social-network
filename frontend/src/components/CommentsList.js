@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import CommentDataService from "../services/CommentService";
 
-import PubItemPostAdmin from "./PubItemPostAdmin";
+import PubItemPostAdminCom from "./PubItemPostAdminCom";
 import PubItemPostCommentAdmin from "./PubItemPostCommentAdmin";
 
 import UserService from "../services/user.service";
@@ -181,7 +181,8 @@ const CommentsList = () => {
                 </div>
               </header>
               <main>
-                <PubItemPostAdmin
+                <PubItemPostAdminCom
+                  key={comment.publication.id}
                   id={comment.publication.id}
                   title={comment.publication.title}
                   description={comment.publication.description}
@@ -198,7 +199,7 @@ const CommentsList = () => {
                 </h2>
                 {/* {comments?.map((comment, index) => ( */}
                 <PubItemPostCommentAdmin
-                  key={index}
+                  key={comment.id}
                   id={comment.id}
                   text={comment.text}
                   commenter_name={comment.name}

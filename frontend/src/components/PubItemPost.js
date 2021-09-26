@@ -40,7 +40,9 @@ const PubItemPost = (props) => {
       <div className="flex flex-col space-y-4">
         <h3 className="text-md font-semibold ">{title}</h3>
         <p>{description}</p>
-        <img src={image} className="max-w-md" alt="" />
+        <div className="flex justify-around pb-4">
+          <img src={image} className="" alt="" />
+        </div>
       </div>
       <hr />
       <div className="grid grid-cols-3 w-full px-5 my-3">
@@ -63,21 +65,24 @@ const PubItemPost = (props) => {
             aimer
           </span>
         </button>
+
         <button className="flex flex-row justify-center items-center w-full space-x-3">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="27"
-            height="27"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#838383"
-            strokeWidth="2"
-            strokeLinecap="square"
-            strokeLinejoin="round"
-            className="hover:fill-current text-blue-400"
-          >
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
+          <a href="#my-modal">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="27"
+              height="27"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#838383"
+              strokeWidth="2"
+              strokeLinecap="square"
+              strokeLinejoin="round"
+              className="hover:fill-current text-blue-400"
+            >
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </a>
           <span className="font-semibold text-lg text-gray-600">
             <a href="#my-modal">
               <span className="hidden md:block">Ajouter commentaire</span>

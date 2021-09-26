@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-
 import PubItemPost from "./PubItemPost";
 import PubItemPostComment from "./PubItemPostComment";
 import PublicationDataService from "../services/PublicationService";
 import CommentDataService from "../services/CommentService";
 import AuthService from "../services/auth.service";
-
-import UserService from "../services/user.service";
-import EventBus from "../common/EventBus";
 
 const PublicationPost = (props) => {
   const initialCommentState = {
@@ -22,7 +17,8 @@ const PublicationPost = (props) => {
   const [currentUser, setCurrentUser] = useState();
   const [comment, setComment] = useState(initialCommentState);
 
-  let history = useHistory();
+  // const [publishername, setPublishername] = useState({});
+  // const [comments, setComments] = useState([]);
 
   const getPublication = async (id) => {
     // await PublicationDataService.get(id)
@@ -44,29 +40,12 @@ const PublicationPost = (props) => {
   };
 
   const saveComment = async () => {
-    UserService.getUserBoard().then(
-      (response) => {
-        // setContent(response.data);
-      },
-      (error) => {
-        if (
-          error.response &&
-          (error.response.status === 401 || error.response.status === 403)
-        ) {
-          EventBus.dispatch("logout");
-          history.push("/login");
-        }
-      }
-    );
-
-    if (currentUser) {
-      var data = {
-        name: currentUser.username,
-        text: comment.text,
-        publicationId: currentPublication.id,
-        userId: currentUser.id,
-      };
-    }
+    var data = {
+      name: currentUser.username,
+      text: comment.text,
+      publicationId: currentPublication.id,
+      userId: currentUser.id,
+    };
 
     CommentDataService.create(data)
       .then((response) => {
