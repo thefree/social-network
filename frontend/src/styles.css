@@ -2208,15 +2208,6 @@ html {
   --tw-border-opacity: 0.2;
 }
 
-.input-primary {
-  --tw-border-opacity: 1;
-  border-color: hsla(var(--p)/var(--tw-border-opacity,1));
-}
-
-.input-primary:focus {
-  box-shadow: 0 0 0 2px hsl(var(--b1)),0 0 0 4px hsl(var(--p));
-}
-
 .input-disabled,.input[disabled] {
   --tw-bg-opacity: 1;
   background-color: hsla(var(--b2)/var(--tw-bg-opacity,1));
@@ -2725,15 +2716,6 @@ html {
   color: hsla(var(--s)/var(--tw-text-opacity,1));
 }
 
-.badge-success {
-  --tw-bg-opacity: 1;
-  --tw-bg-opacity: 0.1;
-  background-color: hsla(var(--su)/var(--tw-bg-opacity,1));
-  border-color: transparent;
-  --tw-text-opacity: 1;
-  color: hsla(var(--su)/var(--tw-text-opacity,1));
-}
-
 .badge-warning {
   --tw-bg-opacity: 1;
   --tw-bg-opacity: 0.1;
@@ -2806,6 +2788,58 @@ html {
   left: 2.5rem;
 }
 
+.-top-10 {
+  top: -2.5rem;
+}
+
+.top-10 {
+  top: 2.5rem;
+}
+
+.top-20 {
+  top: 5rem;
+}
+
+.top-28 {
+  top: 7rem;
+}
+
+.top-96 {
+  top: 24rem;
+}
+
+.top-56 {
+  top: 14rem;
+}
+
+.top-60 {
+  top: 15rem;
+}
+
+.-right-16 {
+  right: -4rem;
+}
+
+.-right-40 {
+  right: -10rem;
+}
+
+.right-40 {
+  right: 10rem;
+}
+
+.right-20 {
+  right: 5rem;
+}
+
+.top-40 {
+  top: 10rem;
+}
+
+.-right-20 {
+  right: -5rem;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -2867,10 +2901,6 @@ html {
 
 .mr-2 {
   margin-right: 0.5rem;
-}
-
-.mb-3 {
-  margin-bottom: 0.75rem;
 }
 
 .mb-6 {
@@ -2977,10 +3007,6 @@ html {
   height: 4rem;
 }
 
-.h-8 {
-  height: 2rem;
-}
-
 .h-auto {
   height: auto;
 }
@@ -3031,10 +3057,6 @@ html {
 
 .w-6 {
   width: 1.5rem;
-}
-
-.w-8 {
-  width: 2rem;
 }
 
 .w-10 {
@@ -3154,10 +3176,6 @@ html {
 
 .items-baseline {
   align-items: baseline;
-}
-
-.justify-end {
-  justify-content: flex-end;
 }
 
 .justify-center {
@@ -3332,11 +3350,6 @@ html {
 .bg-gray-200 {
   --tw-bg-opacity: 1;
   background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
-}
-
-.bg-gray-800 {
-  --tw-bg-opacity: 1;
-  background-color: rgba(31, 41, 55, var(--tw-bg-opacity));
 }
 
 .bg-gray-900 {
@@ -3520,6 +3533,18 @@ html {
 
 .pb-5 {
   padding-bottom: 1.25rem;
+}
+
+.pt-10 {
+  padding-top: 2.5rem;
+}
+
+.pt-16 {
+  padding-top: 4rem;
+}
+
+.pt-24 {
+  padding-top: 6rem;
 }
 
 .text-center {
@@ -3955,6 +3980,11 @@ html {
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
+
+  .sm\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -3964,10 +3994,6 @@ html {
 
   .md\:flex {
     display: flex;
-  }
-
-  .md\:hidden {
-    display: none;
   }
 
   .md\:h-full {
@@ -4027,8 +4053,23 @@ html {
     width: 40%;
   }
 
+  .xl\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .xl\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
   .xl\:text-5xl {
     font-size: 3rem;
     line-height: 1;
+  }
+
+  .xl\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }

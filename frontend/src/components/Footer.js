@@ -37,12 +37,12 @@ const Footer = () => {
           </svg>
         </button>
 
-        <p className="font-bold">
+        {/* <p className="font-bold">
           ACME Industries Ltd
           <br />
           Providing reliable tech since 1992
         </p>
-        <p>Copyright © 2021 - All right reserved</p>
+        <p>Copyright © 2021 - All right reserved</p> */}
       </div>
       <div>
         <div className="grid grid-flow-col gap-4">

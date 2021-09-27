@@ -79,11 +79,12 @@ const Login = (props) => {
             }}
           >
             <div className="absolute bg-gradient-to-b from-indigo-600 to-blue-500 opacity-75 inset-0 z-0">
-              <div className="w-full  max-w-md z-10">
+              {/* <div className="w-full  max-w-md z-10"> */}
+              <div className="w-full z-10 px-4 pt-24 xl:px-10">
                 <div className="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">
                   Bienvenue sur le réseau social de Groupomania
                 </div>
-                <div className="sm:text-sm xl:text-md text-gray-200 font-normal">
+                <div className="sm:text-xl text-gray-200 font-normal">
                   {" "}
                   Connectez vous afin de publier et commenter les posts de vos
                   collègues.
@@ -91,7 +92,8 @@ const Login = (props) => {
               </div>
             </div>
           </div>
-          <div className="md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full w-2/5 xl:w-2/5 p-8  md:p-10 lg:p-14 sm:rounded-lg md:rounded-none bg-white">
+          {/* <div className="md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full xl:w-2/5 p-8  md:p-10 lg:p-14 sm:rounded-lg md:rounded-none bg-white"> */}
+          <div className="md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full xl:w-2/5 p-4 md:p-10 lg:p-14 sm:rounded-lg md:rounded-none bg-white">
             <div className="max-w-md w-full space-y-8">
               <div className="text-center">
                 <h2 className="mt-6 text-3xl font-bold text-gray-900">
