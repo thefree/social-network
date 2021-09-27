@@ -69,14 +69,6 @@ const AddPublication = () => {
       data.append("currentFile", currentFile);
     }
 
-    // const formdata = new FormData();
-    // formdata.append("title", publication.title);
-    // formdata.append("description", publication.description);
-    // // formdata.append("myfile", publication.myfile);
-    // formdata.append("userId", currentUser.id);
-    // formdata.append("currentFile", currentFile);
-
-    // PublicationDataService.create(formdata);
     PublicationDataService.create(data)
       .then((response) => {
         setPublication({

@@ -96,12 +96,12 @@ const CommentsList = () => {
             <h1 className="mb-5 text-5xl font-bold">
               Gestion des commentaires
             </h1>
-            <p className="mb-5 text-justify">
+            {/* <p className="mb-5 text-justify">
               Effectuez une recheche sur le contenu ou en selectionnant un
               commentaire dans la liste. <br />
               Attention: L'action sur le bouton " TOUT SUPPRIMER" est définitive
               !!!.
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
