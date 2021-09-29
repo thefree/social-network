@@ -10,8 +10,8 @@ import EventBus from "../common/EventBus";
 const PublicationsList = () => {
   const [publications, setPublications] = useState([]);
   const [currentPublication, setCurrentPublication] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(-1);
-  const [searchTitle, setSearchTitle] = useState("");
+  // const [currentIndex, setCurrentIndex] = useState(-1);
+  // const [searchTitle, setSearchTitle] = useState("");
 
   let history = useHistory();
 
@@ -31,12 +31,13 @@ const PublicationsList = () => {
       }
     );
     retrievePublications();
+    // eslint-disable-next-line
   }, []);
 
-  const onChangeSearchTitle = (e) => {
-    const searchTitle = e.target.value;
-    setSearchTitle(searchTitle);
-  };
+  // const onChangeSearchTitle = (e) => {
+  //   const searchTitle = e.target.value;
+  //   setSearchTitle(searchTitle);
+  // };
 
   const retrievePublications = () => {
     // PublicationDataService.getAll()
@@ -50,15 +51,16 @@ const PublicationsList = () => {
       });
   };
 
-  const refreshList = () => {
-    retrievePublications();
-    setCurrentPublication(null);
-    setCurrentIndex(-1);
-  };
+  // const refreshList = () => {
+  //   retrievePublications();
+  //   setCurrentPublication(null);
+  //   // setCurrentIndex(-1);
+  // };
 
   const setActivePublication = (publication, index) => {
     setCurrentPublication(publication);
-    setCurrentIndex(index);
+    // setCurrentIndex(index);
+
     // history.push("#my-modal");
     // history.replace("#my-modal");
   };
@@ -67,27 +69,27 @@ const PublicationsList = () => {
     setCurrentPublication(false);
   };
 
-  const removeAllPublications = () => {
-    PublicationDataService.removeAll()
-      .then((response) => {
-        console.log(response.data);
-        refreshList();
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
+  // const removeAllPublications = () => {
+  //   PublicationDataService.removeAll()
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       refreshList();
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // };
 
-  const findByTitle = () => {
-    PublicationDataService.findByTitle(searchTitle)
-      .then((response) => {
-        setPublications(response.data);
-        console.log(response.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
+  // const findByTitle = () => {
+  //   PublicationDataService.findByTitle(searchTitle)
+  //     .then((response) => {
+  //       setPublications(response.data);
+  //       console.log(response.data);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // };
 
   return (
     <div className="flex flex-col items-center">

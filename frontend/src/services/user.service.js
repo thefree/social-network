@@ -7,7 +7,7 @@ const getPublicContent = () => {
   return axios.get(API_URL + "all");
 };
 
-const getUserBoard = () => {
+const getUserBoard = async () => {
   return axios.get(API_URL + "user", { headers: authHeader() });
 };
 

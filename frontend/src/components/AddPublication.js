@@ -22,6 +22,7 @@ const AddPublication = () => {
   let history = useHistory();
 
   useEffect(() => {
+    // let history = useHistory();
     UserService.getUserBoard().then(
       (response) => {
         // setContent(response.data);
@@ -40,6 +41,7 @@ const AddPublication = () => {
     if (user) {
       setCurrentUser(user);
     }
+    // eslint-disable-next-line
   }, []);
 
   const handleInputChange = (event) => {

@@ -66,7 +66,11 @@ const PubItemPost = (props) => {
           </span>
         </button>
 
-        <button className="flex flex-row justify-center items-center w-full space-x-3">
+        <button
+          className="flex flex-row justify-center items-center w-full space-x-3"
+          // type="button"
+          // disabled
+        >
           <a href="#my-modal">
             <svg
               xmlns="http://www.w3.org/2000/svg"

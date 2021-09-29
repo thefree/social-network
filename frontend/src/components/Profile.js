@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AuthService from "../services/auth.service";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import UserService from "../services/user.service";
 import EventBus from "../common/EventBus";
@@ -34,6 +34,7 @@ const Profile = () => {
       setCurrentUser(user);
     }
     console.log("Current User: ", currentUser);
+    // eslint-disable-next-line
   }, []);
 
   return (

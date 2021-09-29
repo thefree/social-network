@@ -33,7 +33,7 @@ const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user"));
 };
 
-const getCurrentUserPromise = () => {
+const getCurrentUserPromise = async () => {
   return new Promise((resolve) => {
     let user = JSON.parse(localStorage.getItem("user"));
 

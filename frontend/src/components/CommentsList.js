@@ -11,8 +11,8 @@ import EventBus from "../common/EventBus";
 const CommentsList = () => {
   const [comments, setComments] = useState([]);
   const [currentComment, setCurrentComment] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(-1);
-  const [searchText, setSearchText] = useState("");
+  // const [currentIndex, setCurrentIndex] = useState(-1);
+  // const [searchText, setSearchText] = useState("");
 
   let history = useHistory();
 
@@ -32,12 +32,13 @@ const CommentsList = () => {
       }
     );
     retrieveComments();
+    // eslint-disable-next-line
   }, []);
 
-  const onChangeSearchText = (e) => {
-    const searchText = e.target.value;
-    setSearchText(searchText);
-  };
+  // const onChangeSearchText = (e) => {
+  //   const searchText = e.target.value;
+  //   setSearchText(searchText);
+  // };
 
   const retrieveComments = () => {
     // CommentDataService.getAll()
@@ -51,42 +52,42 @@ const CommentsList = () => {
       });
   };
 
-  const refreshList = () => {
-    retrieveComments();
-    setCurrentComment(null);
-    setCurrentIndex(-1);
-  };
+  // const refreshList = () => {
+  //   retrieveComments();
+  //   setCurrentComment(null);
+  //   // setCurrentIndex(-1);
+  // };
 
   const setActiveComment = (comment, index) => {
     setCurrentComment(comment);
-    setCurrentIndex(index);
+    // setCurrentIndex(index);
   };
 
   const desactiveComment = () => {
     setCurrentComment(false);
   };
 
-  const removeAllComments = () => {
-    CommentDataService.removeAll()
-      .then((response) => {
-        console.log(response.data);
-        refreshList();
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
+  // const removeAllComments = () => {
+  //   CommentDataService.removeAll()
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       refreshList();
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // };
 
-  const findByText = () => {
-    CommentDataService.findByText(searchText)
-      .then((response) => {
-        setComments(response.data);
-        console.log(response.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
+  // const findByText = () => {
+  //   CommentDataService.findByText(searchText)
+  //     .then((response) => {
+  //       setComments(response.data);
+  //       console.log(response.data);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // };
 
   return (
     <div className="flex flex-col items-center">

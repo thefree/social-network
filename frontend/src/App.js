@@ -12,7 +12,7 @@ import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
 import Menu from "./components/Menu";
 import Footer from "./components/Footer";
-import PublicationsHome from "./components/PublicationsHome";
+// import PublicationsHome from "./components/PublicationsHome";
 import PublicationsList from "./components/PublicationsList";
 import AddPublication from "./components/AddPublication";
 import Publication from "./components/Publication";
@@ -67,7 +67,7 @@ const App = () => {
       <div>
         <Switch>
           <Route exact path={["/", "/home"]} component={Home} />
-          <Route exact path="/publicationsHome" component={PublicationsHome} />
+          {/* <Route exact path="/publicationsHome" component={PublicationsHome} /> */}
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" component={Profile} />
