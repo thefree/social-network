@@ -188,6 +188,44 @@ exports.deleteAll = (req, res) => {
     });
 };
 
+// Delete all Comments By USER from the database.
+exports.deleteAllByUser = (req, res) => {
+  const userid = req.userId;
+
+  Comment.destroy({
+    where: { userId: userid },
+    truncate: false,
+  })
+    .then((nums) => {
+      // res.send({ message: `${nums} Comments were deleted successfully!` });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while removing all Comments.",
+      });
+    });
+};
+
+// Delete all Comments By USER from the database.
+exports.deleteAllPubIsNull = () => {
+  // const userid = req.userId;
+
+  Comment.destroy({
+    where: { publicationId: null },
+    truncate: false,
+  })
+    .then((nums) => {
+      // res.send({ message: `${nums} Comments were deleted successfully!` });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while removing all Comments.",
+      });
+    });
+};
+
 // find all published Comment
 exports.findAllPublished = (req, res) => {
   Comment.findAll({ where: { published: true } })

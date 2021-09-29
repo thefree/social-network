@@ -1,8 +1,5 @@
 const db = require("../models");
 const User = db.user;
-const PublicationCtrl = require("../controllers/publication.controller");
-const CommentCtrl = require("../controllers/comment.controller");
-
 const Op = db.Sequelize.Op;
 
 exports.allAccess = (req, res) => {
@@ -38,12 +35,6 @@ exports.moderatorBoard = (req, res) => {
 
 exports.deleteUser = (req, res) => {
   const id = req.userId;
-
-  PublicationCtrl.deleteAllByUser(req, res);
-
-  CommentCtrl.deleteAllByUser(req, res);
-
-  CommentCtrl.deleteAllPubIsNull();
 
   User.destroy({
     where: { id: id },

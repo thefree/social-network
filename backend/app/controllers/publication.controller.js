@@ -210,6 +210,25 @@ exports.deleteAll = (req, res) => {
     });
 };
 
+// Delete all Publications By USER from the database.
+exports.deleteAllByUser = (req, res) => {
+  const userid = req.userId;
+
+  Publication.destroy({
+    where: { userId: userid },
+    truncate: false,
+  })
+    .then((nums) => {
+      // res.send({ message: `${nums} Publication were deleted successfully!` });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while removing all Publications.",
+      });
+    });
+};
+
 // find all published Publications
 exports.findAllPublished = (req, res) => {
   Publication.findAll({ where: { published: true } })
