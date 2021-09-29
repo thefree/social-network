@@ -19,9 +19,15 @@ const getAdminBoard = () => {
   return axios.get(API_URL + "admin", { headers: authHeader() });
 };
 
+const removeUser = () => {
+  // return axios.delete(API_URL + `/${id}`, { headers: authHeader() });
+  return axios.delete(API_URL + "user", { headers: authHeader() });
+};
+
 export default {
   getPublicContent,
   getUserBoard,
   getModeratorBoard,
   getAdminBoard,
+  removeUser,
 };

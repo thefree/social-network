@@ -174,47 +174,42 @@ const CommentsList = () => {
         {comments &&
           comments.map((comment, index) => (
             <>
-              {/* {comment.publication.id( */}
-              {comment.publicationId && (
-                <>
-                  <header className="bg-white shadow">
-                    <div className="mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                      <h1 className="text-2xl font-bold text-gray-900">
-                        {comment.publication.title}
-                      </h1>
-                    </div>
-                  </header>
-                  <main>
-                    <PubItemPostAdminCom
-                      key={comment.publication.id}
-                      id={comment.publication.id}
-                      title={comment.publication.title}
-                      description={comment.publication.description}
-                      // publishername={publishername.username}
-                      publishername={comment.publication.name}
-                      image={comment.publication.imageUrl}
-                      // dateFrom={comment.publication.createdAt}
-                      dateFrom={comment.publication.createdAt.substring(0, 25)}
-                    />
-                  </main>
-                  <aside className="">
-                    <h2 className="mx-10 text-xl font-bold text-gray-900">
-                      Commentaire
-                    </h2>
-                    {/* {comments?.map((comment, index) => ( */}
-                    <PubItemPostCommentAdmin
-                      key={comment.id}
-                      id={comment.id}
-                      text={comment.text}
-                      commenter_name={comment.name}
-                      // dateFrom={comment.createdAt}
-                      dateFrom={comment.createdAt.substring(0, 25)}
-                      onClick={() => setActiveComment(comment, index)}
-                    />
-                    {/* ))} */}
-                  </aside>
-                </>
-              )}
+              <header className="bg-white shadow">
+                <div className="mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                  <h1 className="text-2xl font-bold text-gray-900">
+                    {comment.publication.title}
+                  </h1>
+                </div>
+              </header>
+              <main>
+                <PubItemPostAdminCom
+                  key={comment.publication.id}
+                  id={comment.publication.id}
+                  title={comment.publication.title}
+                  description={comment.publication.description}
+                  // publishername={publishername.username}
+                  publishername={comment.publication.name}
+                  image={comment.publication.imageUrl}
+                  // dateFrom={comment.publication.createdAt}
+                  dateFrom={comment.publication.createdAt.substring(0, 25)}
+                />
+              </main>
+              <aside className="">
+                <h2 className="mx-10 text-xl font-bold text-gray-900">
+                  Commentaire
+                </h2>
+                {/* {comments?.map((comment, index) => ( */}
+                <PubItemPostCommentAdmin
+                  key={comment.id}
+                  id={comment.id}
+                  text={comment.text}
+                  commenter_name={comment.name}
+                  // dateFrom={comment.createdAt}
+                  dateFrom={comment.createdAt.substring(0, 25)}
+                  onClick={() => setActiveComment(comment, index)}
+                />
+                {/* ))} */}
+              </aside>
             </>
           ))}
       </div>
