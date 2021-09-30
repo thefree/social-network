@@ -19,6 +19,7 @@ import Publication from "./components/Publication";
 import PublicationPost from "./components/PublicationPost";
 import Comment from "./components/Comment";
 import CommentsList from "./components/CommentsList";
+import UsersList from "./components/UsersList";
 
 // import AuthVerify from "./common/AuthVerify";
 import EventBus from "./common/EventBus";
@@ -80,6 +81,7 @@ const App = () => {
           <Route path="/post/:id" component={PublicationPost} />
           <Route path="/comments/:id" component={Comment} />
           <Route path="/comments" component={CommentsList} />
+          <Route path="/users" component={UsersList} />
         </Switch>
       </div>
 

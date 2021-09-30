@@ -33,9 +33,22 @@ const Profile = () => {
     if (user) {
       setCurrentUser(user);
     }
-    console.log("Current User: ", currentUser);
+    // console.log("Current User: ", currentUser);
+
     // eslint-disable-next-line
   }, []);
+
+  const deleteUser = () => {
+    UserService.removeUser()
+      .then((response) => {
+        // console.log(response.data);
+        EventBus.dispatch("logout");
+        history.push("/login");
+      })
+      .catch((e) => {
+        // console.log(e);
+      });
+  };
 
   return (
     <>
@@ -66,7 +79,9 @@ const Profile = () => {
                     <li key={index}>{role}</li>
                   ))}
               </ul>
-              <button className="btn btn-primary">Get Started</button>
+              <button className="btn btn-primary" onClick={deleteUser}>
+                Supprimer mon Compte !
+              </button>
             </div>
           </div>
         </div>

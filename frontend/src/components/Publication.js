@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PublicationDataService from "../services/PublicationService";
+import { useHistory } from "react-router-dom";
+
+import UserService from "../services/user.service";
+import EventBus from "../common/EventBus";
 
 const Publication = (props) => {
   const initialPublicationState = {
@@ -14,6 +18,8 @@ const Publication = (props) => {
   const [currentFile, setCurrentFile] = useState();
   const [message, setMessage] = useState("");
 
+  let history = useHistory();
+
   const getPublication = (id) => {
     PublicationDataService.get(id)
       .then((response) => {
@@ -21,11 +27,25 @@ const Publication = (props) => {
         console.log(response.data);
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
       });
   };
 
   useEffect(() => {
+    UserService.getUserBoard().then(
+      (response) => {
+        // setContent(response.data);
+      },
+      (error) => {
+        if (
+          error.response &&
+          (error.response.status === 401 || error.response.status === 403)
+        ) {
+          EventBus.dispatch("logout");
+          history.push("/login");
+        }
+      }
+    );
     getPublication(props.match.params.id);
   }, [props.match.params.id]);
 
@@ -49,7 +69,7 @@ const Publication = (props) => {
     PublicationDataService.update(currentPublication.id, data)
       .then((response) => {
         setCurrentPublication({ ...currentPublication, published: status });
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((e) => {
         console.log(e);
@@ -76,25 +96,25 @@ const Publication = (props) => {
     PublicationDataService.update(currentPublication.id, data)
       .then((response) => {
         getPublication(currentPublication.id);
-        console.log(response.data);
+        // console.log(response.data);
         setMessage("The publication was updated successfully!");
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
       });
   };
 
   const deletePublication = () => {
     PublicationDataService.remove(currentPublication.id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setMessage("The publication was deleted successfully!");
         setTimeout(() => {
           props.history.push("/publications");
         }, 3000);
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
       });
   };
 

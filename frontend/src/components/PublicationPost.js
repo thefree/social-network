@@ -31,10 +31,11 @@ const PublicationPost = (props) => {
         setCurrentPublication(response.data);
         // setPublishername(response.data.user);
         // setComments(response.data.comments);
-        console.log("WITHCOMMENTS", response.data);
+
+        // console.log("WITHCOMMENTS", response.data);
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
       });
   };
 
@@ -81,19 +82,34 @@ const PublicationPost = (props) => {
         setTimeout(() => {
           getPublication(props.match.params.id);
         }, 2000);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
       });
   };
 
   useEffect(() => {
     getPublication(props.match.params.id);
+    // UserService.getUserBoard().then(
+    //   (response) => {
+    //     // setContent(response.data);
+    //   },
+    //   (error) => {
+    //     if (
+    //       error.response &&
+    //       (error.response.status === 401 || error.response.status === 403)
+    //     ) {
+    //       EventBus.dispatch("logout");
+    //       history.push("/login");
+    //     }
+    //   }
+    // );
     const user = AuthService.getCurrentUser();
     if (user) {
       setCurrentUser(user);
     }
+    // eslint-disable-next-line
   }, [props.match.params.id]);
 
   return (

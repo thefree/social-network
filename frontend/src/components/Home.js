@@ -13,10 +13,10 @@ const Home = () => {
     PublicationDataService.getAll()
       .then((response) => {
         setPublications(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
       });
   };
 

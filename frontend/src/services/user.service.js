@@ -18,10 +18,19 @@ const getModeratorBoard = () => {
 const getAdminBoard = () => {
   return axios.get(API_URL + "admin", { headers: authHeader() });
 };
+// Only for isModOrAdmin
+const getAllUser = () => {
+  return axios.get(API_URL + "list", { headers: authHeader() });
+};
 
 const removeUser = () => {
   // return axios.delete(API_URL + `/${id}`, { headers: authHeader() });
   return axios.delete(API_URL + "user", { headers: authHeader() });
+};
+
+const removeUserById = (id) => {
+  return axios.delete(API_URL + `user/${id}`, { headers: authHeader() });
+  // return axios.delete(API_URL + "user", { headers: authHeader() });
 };
 
 export default {
@@ -29,5 +38,7 @@ export default {
   getUserBoard,
   getModeratorBoard,
   getAdminBoard,
+  getAllUser,
   removeUser,
+  removeUserById,
 };
