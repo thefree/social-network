@@ -16,7 +16,11 @@ module.exports = function (app) {
   app.get("/api/test/user/withpub/:id", controller.userWithPub);
   //
 
-  app.get("/api/test/user", [authJwt.verifyToken], controller.userBoard);
+  app.get(
+    "/api/test/user",
+    [authJwt.verifyToken, authJwt.isUserModAdm],
+    controller.userBoard
+  );
 
   app.get(
     "/api/test/mod",
@@ -29,11 +33,23 @@ module.exports = function (app) {
     [authJwt.verifyToken, authJwt.isAdmin],
     controller.adminBoard
   );
+  // GET users list
+  app.get(
+    "/api/test/list",
+    [authJwt.verifyToken, authJwt.isModerator],
+    controller.findAll
+  );
 
   app.delete(
     // "/api/test/user/:id",
     "/api/test/user/",
     authJwt.verifyToken,
     controller.deleteUser
+  );
+
+  app.delete(
+    "/api/test/user/:id",
+    [authJwt.verifyToken, authJwt.isModerator],
+    controller.deleteUserById
   );
 };

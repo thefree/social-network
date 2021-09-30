@@ -67,6 +67,39 @@ const isModerator = (req, res, next) => {
   });
 };
 
+const isUserModAdm = (req, res, next) => {
+  User.findByPk(req.userId)
+    .then((user) => {
+      user.getRoles().then((roles) => {
+        for (let i = 0; i < roles.length; i++) {
+          if (roles[i].name === "user") {
+            next();
+            return;
+          }
+
+          if (roles[i].name === "moderator") {
+            next();
+            return;
+          }
+
+          if (roles[i].name === "admin") {
+            next();
+            return;
+          }
+        }
+
+        res.status(403).send({
+          message: "Require a Role!",
+        });
+      });
+    })
+    .catch((err) => {
+      res.status(401).send({
+        message: "Error retrieving User with id=" + req.userId,
+      });
+    });
+};
+
 const isModeratorOrAdmin = (req, res, next) => {
   User.findByPk(req.userId).then((user) => {
     user.getRoles().then((roles) => {
@@ -118,5 +151,6 @@ const authJwt = {
   isModerator: isModerator,
   isModeratorOrAdmin: isModeratorOrAdmin,
   isModOrAdm,
+  isUserModAdm,
 };
 module.exports = authJwt;
